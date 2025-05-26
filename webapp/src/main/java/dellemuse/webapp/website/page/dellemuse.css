@@ -1,0 +1,18 @@
+
+
+body.dellemuse {margin:0; padding:0; color:#131414; font-family: Segoe UI, Montserrat, Arial, sans serif;}
+.main {min-height: calc(100vh - 117px);}
+
+.banner {background:#cccccc; color:white; height:200px;}
+
+.border {border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color); border-radius: var(--bs-border-radius);}
+.separator {border-top: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;}
+.dropdown-item a {color: var(--bs-navbar-active-color); text-decoration:none;}
+.global-footer .menu-item a {padding:15px 30px; color: var(--bs-navbar-active-color); text-decoration:none;}
+
+.text {font-size:1.1rem; line-height:1.75rem;}
+
+
+.icon-expander {width:2em; float:left;}
+.icon-collapsed {width:1em; float:left;}
+.icon-expanded {width:1em; float:left;}
