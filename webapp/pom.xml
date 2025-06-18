@@ -13,65 +13,38 @@
 	<artifactId>dellemuse-webapp</artifactId>
 	<version>main</version>
 	<packaging>war</packaging>
-
-	<!-- packaging>war</ packaging  -->
-
 	<name>dellemuse-webapp</name>
-	<url>http://maven.apache.org</url>
+	<url>https://odilon.io/dellemuse</url>
 
 	<description>
-		Dellemuse Web App
+		Dellemuse Webapp
 	</description>
 
-
 	<properties>
-
 		<apache-freemaker-version>2.3.33</apache-freemaker-version>
-		<commons-validator.version>1.8.0</commons-validator.version> 	<!--  01
-		/2024  -->
-
-
-		<commons-io-version>2.18.0</commons-io-version> 				<!--  01 /2025  -->
-		<commons-logging-version>1.3.5</commons-logging-version> 		<!--  04 /2025 -->
-
-		<commons-validator.version>1.8.0</commons-validator.version> 	<!--  01
-		/2024  -->
-
+		<commons-validator.version>1.8.0</commons-validator.version>
+		<commons-io-version>2.18.0</commons-io-version>
+		<commons-logging-version>1.3.5</commons-logging-version>
+		<commons-validator.version>1.8.0</commons-validator.version>
 		<dellemuse-client-version>0.1-beta</dellemuse-client-version>
 		<dellemuse-model-version>0.1-beta</dellemuse-model-version>
-
-		<disruptor-version>3.4.4</disruptor-version> 			<!--  01 /2024 version 4.0.0
-		did not work with LogManager  -->
+		<disruptor-version>3.4.4</disruptor-version> 			<!--  01 /2024 version 4.0.0 did not work with LogManager  -->
 		<dropwizard-metrics-version>4.2.25</dropwizard-metrics-version>
-
 		<jakarta.validation-api-version>3.1.1</jakarta.validation-api-version>
-
 		<java-version>17</java-version>
-
 		<junit-jupiter.version>5.3.2</junit-jupiter.version>
 		<junit-version>5.10.2</junit-version>
-
 		<log4j2-version>2.22.1</log4j2-version>
-
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<maven.compiler.release>17</maven.compiler.release>
-
 		<maven-javadoc-plugin-version>3.6.3</maven-javadoc-plugin-version>
 		<maven-jar-plugin-version>3.3.0</maven-jar-plugin-version>
-
 		<maven.test.skip>true</maven.test.skip>
-
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<spring-boot-starter-version>4.0.0</spring-boot-starter-version>
-
-		<!-- tomcat-dbcp-version>11.0.6</tomcat-dbcp-version>  <  4/2025 -->
-
-		<wicket-version>10.2.0</wicket-version>
-
+		<wicket-version>10.0.0</wicket-version>
 		<wktui-version>0.1-beta</wktui-version>
-
 	</properties>
 
 	<developers>
@@ -88,19 +61,13 @@
 			<id>my-local-repo</id>
 			<url>file://${basedir}/nonstandardlib/</url>
 		</repository>
-
-		<!--repository>
-			<id>novamens-releases</id>		
-			<url>https://maven.novamens.com/nexus/content/repositories/releases/</url>
-		</ repository-->
-
 	</repositories>
 
 
 	<dependencies>
 
 		<!-- s. LOGGING ========================================================  -->
-
+		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -123,8 +90,7 @@
 		</dependency>
 
 		<dependency>
-			<!-- used by Log4j2 Async  -->
-			<groupId>com.lmax</groupId>
+			<groupId>com.lmax</groupId> <!-- used by Log4j2 Async  -->
 			<artifactId>disruptor</artifactId>
 			<version>${disruptor-version}</version>
 		</dependency>
@@ -134,10 +100,8 @@
 			<artifactId>log4j-spring-boot</artifactId>
 		</dependency>
 
-
-		<!-- DELLEMUSE MODEL
-		==================================================================  -->
-
+		<!-- DELLEMUSE SDK AND MODEL============================================  -->
+		
 		<dependency>
 			<groupId>dellemuse</groupId>
 			<artifactId>dellemuse-client</artifactId>
@@ -150,24 +114,8 @@
 			<version>${dellemuse-model-version}</version>
 		</dependency>
 
-
-		<!-- Freemarker =======================================================  -->
-
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<!-- version>${apache-freemaker-version}< / version -->
-		</dependency>
-
-
-		<dependency>
-			<groupId>jakarta.validation</groupId>
-			<artifactId>jakarta.validation-api</artifactId>
-		</dependency>
-
-
-		<!-- MONITOR =======================================================  -->
-
+		<!-- MONITOR =========================================================  -->
+		
 		<dependency>
 			<groupId>io.dropwizard.metrics</groupId>
 			<artifactId>metrics-core</artifactId>
@@ -175,22 +123,11 @@
 		</dependency>
 
 		<!-- SPRING ========================================================  -->
-
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<!--exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions -->
 		</dependency>
-
-		<!-- dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jetty</artifactId>
-		</ dependency -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -204,67 +141,35 @@
 		</dependency>
 
 		<!-- Add Log4j2 Dependency -->
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
-
-		<!-- dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-spring-boot</artifactId>
-		</ dependency -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-		<!-- dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-security</artifactId>
-		</dependency  -->
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
-		<!-- dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-		  </ dependency-->
-
-		<!-- dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-orm</artifactId>
-		</dependency -->
-
-
-		<!-- TOMCAT  Database Connection Pooling
-		================================== -->
-
-		<!-- dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-dbcp</artifactId>
-			<version>${tomcat-dbcp-version}</version>
-		</dependency -->
-
-
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<!-- version>6.1.2.Final< / version -->
 		</dependency>
-
 
 		<!-- s. WICKET  SPRING
 		====================================================  -->
-
 		<!--  
 			Enables and configures Apache Wicket from within a Spring Boot Application.
 		https://mvnrepository.com/artifact/com.giffing.wicket.spring.boot.starter/wicket-spring-boot-starter 
 		-->
-
 
 		<dependency>
 			<groupId>com.giffing.wicket.spring.boot.starter</groupId>
@@ -272,51 +177,13 @@
 			<version>${spring-boot-starter-version}</version>
 
 			<exclusions>
-
-				<!--exclusion>
-					<groupId>org.wicketstuff</groupId>
-					<artifactId>wicketstuff-restannotations</artifactId>
-				</  exclusion-->
-
-
 				<exclusion>
+					<!-- this is provided by wkui -->
 					<groupId>org.apache.wicket</groupId>
 					<artifactId>wicket-core</artifactId>
 				</exclusion>
-
-
-				<exclusion>
-					<groupId>org.apache.wicket</groupId>
-					<artifactId>wicket-ioc</artifactId>
-				</exclusion>
-
-
-				<exclusion>
-					<groupId>org.apache.wicket</groupId>
-					<artifactId>wicket-auth-roles</artifactId>
-				</exclusion>
-
-
-				<exclusion>
-					<groupId>org.apache.wicket</groupId>
-					<artifactId>wicket-request</artifactId>
-				</exclusion>
-
-
-				<exclusion>
-					<groupId>org.apache.wicket</groupId>
-					<artifactId>wicket-util</artifactId>
-				</exclusion>
-
-				<!-- exclusion>
-					<groupId>org.apache.wicket</groupId>
-					<artifactId>wicket-spring</artifactId>
-				</ exclusionn -->
-
 			</exclusions>
-
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.wicketstuff</groupId>
@@ -330,61 +197,17 @@
 			<version>${wicket-version}</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.wicketstuff</groupId>
 			<artifactId>wicketstuff-restannotations-json</artifactId>
 			<version>${wicket-version}</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>io</groupId>
 			<artifactId>wktui</artifactId>
 			<version>${wktui-version}</version>
 		</dependency>
-
-
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-ioc</artifactId>
-			<version>${wicket-version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-auth-roles</artifactId>
-			<version>${wicket-version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-request</artifactId>
-			<version>${wicket-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-util</artifactId>
-			<version>${wicket-version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-spring</artifactId>
-			<version>${wicket-version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.reflections</groupId>
-			<artifactId>reflections</artifactId>
-			<version>0.10.2</version>
-		</dependency>
-
 
 		<!-- s. TEST ====================================================  -->
 
@@ -401,14 +224,6 @@
 			</exclusions>
 		</dependency>
 
-
-		<!--dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-tester</artifactId>
-			<version>${wicket-version}</version>
-			<scope>test</scope>
-		</dependency -->
-
 		<!-- e. TEST ====================================================  -->
 
 		<!-- junit 5 -->
@@ -418,15 +233,12 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
-
 
 	<build>
 		<resources>
@@ -444,55 +256,7 @@
 			</resource>
 		</resources>
 
-
 		<plugins>
-
-
-			<!--_plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-
-
-				<configuration>
-					<transformers>
-						<transformer
-							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer" />
-					</transformers>
-					<filters>
-						<filter>
-							<artifact>*:*</artifact>
-							<excludes>
-								<exclude>META-INF/*.SF</exclude>
-								<exclude>META-INF/*.DSA</exclude>
-								<exclude>META-INF/*.RSA</exclude>
-							</excludes>
-						</filter>
-					</filters>
-				</configuration>
-
-
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<filters>
-								<filter>
-									<artifact>
-										org.wicketstuff:wicketstuff-restannotations</artifact>
-									<excludes>
-										<exclude>**/RestAnnotationsConfig.class</exclude>
-									</excludes>
-								</filter>
-							</filters>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin -->
-
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -520,10 +284,139 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
-
 		</plugins>
 	</build>
 
 
 </project>
+
+
+
+		<!-- Freemarker =======================================================  -->
+
+		<!--dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</ dependency -->
+
+		<!-- dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+		</ dependency -->
+
+		
+		<!-- dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency  -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				<!-- dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-ioc</artifactId>
+			<version>${wicket-version}</version>
+		</! dependency -->
+
+		<!-- dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-auth-roles</artifactId>
+			<version>${wicket-version}</version>
+		</dependency -->
+
+		<!-- dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-request</artifactId>
+			<version>${wicket-version}</version>
+		</! dependency -->
+
+		<!-- dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-util</artifactId>
+			<version>${wicket-version}</version>
+		</!dependency -->
+
+		<!-- dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-spring</artifactId>
+			<version>${wicket-version}</version>
+		</ dependency -->
+
+		<!-- dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.10.2</version>
+		</dependency -->
+
+		
+						<!-- com.giffing.wicket.spring.boot.starter EXCLUSIONS -->
+				
+				<!--exclusion>
+					<groupId>org.apache.wicket</groupId>
+					<artifactId>wicket-ioc</artifactId>
+				</exclusion -->
+
+				<!--  exclusion>
+					<groupId>org.apache.wicket</groupId>
+					<artifactId>wicket-auth-roles</artifactId>
+				</xclusion -->
+
+				<!-- exclusion>
+					<groupId>org.apache.wicket</groupId>
+					<artifactId>wicket-request</artifactId>
+				</exclusion -->
+
+				<!-- exclusion>
+					<groupId>org.apache.wicket</groupId>
+					<artifactId>wicket-util</artifactId>
+				</ exclusion -->
+
+				<!-- exclusion>
+					<groupId>org.apache.wicket</groupId>
+					<artifactId>wicket-spring</artifactId>
+				</ exclusionn -->
+
+				
+				
+				<!-- sPRING exclision tomcat -->				
+				<!--exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions -->
+
+			
+			<!-- Spring include Jetty -->
+			<!-- dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</ dependency -->
+
+
+
+
+		<!--dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-tester</artifactId>
+			<version>${wicket-version}</version>
+			<scope>test</scope>
+		</dependency -->
