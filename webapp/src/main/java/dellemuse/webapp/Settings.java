@@ -20,6 +20,52 @@ public class Settings extends BaseService implements SystemService {
 	
 	private static final OffsetDateTime systemStarted = OffsetDateTime.now();
 	
+	
+	/** DELLEMUSE SERVER ----------------------------------------------------- */
+	
+    @Value("${dellemuse.server.port:9876}")
+    private int dellemuseServerPort;
+	
+    @Value("${dellemuse.server.endpoint:http://localhost}")
+    private String dellemuseServerEndpoint;
+	
+    @Value("${dellemuse.server.ssl:false}")
+    private String dellemuseServerSslStr;
+    private boolean dellemuseServerSsl;
+    
+    @Value("${dellemuse.server.accessKey:dellemuse}")
+    private String dellemuseServerAccessKey;
+    
+    @Value("${dellemuse.server.secretKey:dellemuse}")
+    private String dellemuseServerSecretKey;
+
+    
+    
+    /** DELLEMUSE WEBAPP ----------------------------------------------------- */
+    
+    
+
+    
+    @Value("${dellemuse.webapp.accessKey:dellemuse}")
+    @NonNull
+    protected String accessKey;
+        
+    @Value("${dellemuse.webapp.secretKey:dellemuse}")
+    @NonNull
+    protected String secretKey;
+
+    @Value("${server.port:8091}")
+    protected int port;
+    
+    @Value("${dellemuse.webapp.endpoint:http://localhost}")
+    @NonNull
+    protected String endpoint;
+
+    
+    
+    
+    
+	
 	@Value("${scanFreqmillisecs:10000}")
 	private int scanFreqMillisecs;
 
@@ -38,49 +84,12 @@ public class Settings extends BaseService implements SystemService {
 	private String indexExportDir;
 	
 	// SERVER ------------------------
-	
-		/* default -> paleta */
-		@Value("${accessKey:dellemuse}")
-		@NonNull
-		protected String accessKey;
 		
-		/* default -> paleta */
-		@Value("${secretKey:dellemuse}")
-		@NonNull
-		protected String secretKey;
-
-		/* default port -> 8080 */
-		@Value("${server.port:8099}")
-		protected int port;
 		
-		@Value("${server.url:http://localhost}")
-		@NonNull
-		protected String url;
-	
 	@Autowired
 	public Settings() {
 	}
 
-	public OffsetDateTime getSystemStartTime() {
-		return systemStarted;
-	}
-	
-	public String getAccessKey() {
-		return accessKey;
-	}
-
-	public String getSecretKey() {
-		return secretKey;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-	
-	public int getPort() {
-		return port;
-	}
-	
 	@PostConstruct
 	protected void init() {
 
@@ -98,6 +107,127 @@ public class Settings extends BaseService implements SystemService {
 		
 		if (indexExportDir==null || indexExportDir.trim().length()==0 || indexExportDir.trim().equals("null"))
 			indexExportDir="torneos-web";
+		
 		indexExportDir=indexExportDir.trim();
+		
+		dellemuseServerSsl=dellemuseServerSslStr.equals("true");
+		
 	}
+
+    public String getTemplatesDir() {
+        return templatesDir;
+    }
+
+    public void setTemplatesDir(String templatesDir) {
+        this.templatesDir = templatesDir;
+    }
+
+    public String getExportDir() {
+        return exportDir;
+    }
+
+    public void setExportDir(String exportDir) {
+        this.exportDir = exportDir;
+    }
+
+    public String getDataDir() {
+        return dataDir;
+    }
+
+    public void setDataDir(String dataDir) {
+        this.dataDir = dataDir;
+    }
+
+    public String getIndexExportDir() {
+        return indexExportDir;
+    }
+
+    public void setIndexExportDir(String indexExportDir) {
+        this.indexExportDir = indexExportDir;
+    }
+
+    public static OffsetDateTime getSystemstarted() {
+        return systemStarted;
+    }
+
+    public void setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+    }
+
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public void setEndpoint(String url) {
+        this.endpoint = url;
+    }
+    public OffsetDateTime getSystemStartTime() {
+        return systemStarted;
+    }
+    
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+    
+    public int getPort() {
+        return port;
+    }
+
+    public int getDellemuseServerPort() {
+        return dellemuseServerPort;
+    }
+
+    public void setDellemuseServerPort(int dellemuseServerPort) {
+        this.dellemuseServerPort = dellemuseServerPort;
+    }
+
+    public String getDellemuseServerEndpoint() {
+        return dellemuseServerEndpoint;
+    }
+
+    public void setDellemuseServerEndpoint(String dellemuseServerEndpoint) {
+        this.dellemuseServerEndpoint = dellemuseServerEndpoint;
+    }
+
+    public boolean isDellemuseServerSsl() {
+        return dellemuseServerSsl;
+    }
+
+    public void setDellemuseServerSsl(boolean dellemuseServerSsl) {
+        this.dellemuseServerSsl = dellemuseServerSsl;
+    }
+
+    public String getDellemuseServerAccessKey() {
+        return dellemuseServerAccessKey;
+    }
+
+    public void setDellemuseServerAccessKey(String dellemuseServerAccessKey) {
+        this.dellemuseServerAccessKey = dellemuseServerAccessKey;
+    }
+
+    public String getDellemuseServerSecretKey() {
+        return dellemuseServerSecretKey;
+    }
+
+    public void setDellemuseServerSecretKey(String dellemuseServerSecretKey) {
+        this.dellemuseServerSecretKey = dellemuseServerSecretKey;
+    }
+
+    public String getAppName() {
+        return "Web Application for Service Management";
+    }
+    
+
 }

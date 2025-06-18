@@ -4,14 +4,12 @@ import org.apache.wicket.markup.html.pages.RedirectPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import io.wktui.nav.menu.DropDownMenu;
+import dellemuse.webapp.website.page.DellemuseWebHomePage;
 import io.wktui.nav.menu.LinkMenuItem;
 import io.wktui.nav.menu.MenuItemPanel;
 import io.wktui.nav.menu.NavBar;
 import io.wktui.nav.menu.NavDropDownMenu;
-import io.wktui.nav.menu.SeparatorMenuItem;
-import wktui.base.BasePanel;
-import wktui.base.LabelPanel;
+import wktui.base.LabelLinkPanel;
 import wktui.base.ModelPanel;
 
 
@@ -33,312 +31,35 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 		
 		NavBar<Void> nav = new NavBar<Void>("navbarLeft");
 		
-		LabelPanel logo = new LabelPanel("item", new Model<String>("dellemuse"));
+		LabelLinkPanel logo = new LabelLinkPanel("item", new Model<String>("dellemuse")) {
+            private static final long serialVersionUID = 1L;
+            @Override
+            protected void onClick() {
+                setResponsePage( new DellemuseWebHomePage());
+            }
+		};
+		
 		nav.addNoCollapseLeft(logo);
+		
+		logo.setLinkStyle("text-decoration: none;");
+		logo.setStyle("font-size: 0.85em; font-weight: 500; color: #dd4508; font-style: normal;");
+		
 		add(nav);
 
-		
-		NavBar<Void> navRight = new NavBar<Void>("navbarRight");
-		navRight.addCollapse(getDownloadMenu());
-		navRight.addCollapse(getSitesMenu());
-		navRight.addCollapse(getAboutMenu());
-		navRight.addCollapse(getContactMenu());
-		add(navRight);
+		//NavBar<Void> navRight = new NavBar<Void>("navbarRight");
+		//navRight.addCollapse(getSitesMenu());
+		//navRight.addCollapse(getAboutMenu());
+		//navRight.addCollapse(getContactMenu());
+		//add(navRight);
 	}
 	
 
-	/**
-	 * 
-	 * 
-	 * @return
-	 */
-	private NavDropDownMenu<Void> getDownloadMenu() {
-		
-		NavDropDownMenu<Void> menu = new NavDropDownMenu<Void>("item", null, new Model<String>("download"));
-
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/torneo/info"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Download app");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-
-
-		
-		
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/torneo/fixture"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Fixture");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-		
-
-		
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/torneo/tabla"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Tabla de posiciones");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-				return new  SeparatorMenuItem(id);
-			}
-		});
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/torneo/reglamento"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Reglamento");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/torneo/inscripcion"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Inscripcion");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-
-
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-				return new  SeparatorMenuItem(id);
-			}
-		});
-
-		
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/clubes"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Equipos");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-		
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/clubes"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Jueces");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-
-
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-				return new  SeparatorMenuItem(id);
-			}
-		});
-
-		
-
-		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public MenuItemPanel<Void> getItem(String id) {
-
-				return new  LinkMenuItem<Void>(id) {
-
-					private static final long serialVersionUID = 1L;
-					
-					@Override
-					public void onClick() {
-						setResponsePage(new RedirectPage("/clubes"));
-					}
-
-					@Override
-					public IModel<String> getLabel() {
-						return new Model<String>("Carga de Formulario de Juego");
-					}
-
-					@Override
-					public String getBeforeClick() {
-						return null;
-					}
-				};
-			}
-		});
-
-		
-		return menu;
-	}
-	
-	
  
 
 
 		private  NavDropDownMenu<Void> getSitesMenu() {
 			
-			NavDropDownMenu<Void> menu = new NavDropDownMenu<Void>("item", null, new Model<String>("Sites"));
+			NavDropDownMenu<Void> menu = new NavDropDownMenu<Void>("item", null, new Model<String>("Instituciones"));
 			
 			
 			
@@ -355,12 +76,12 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 						
 						@Override
 						public void onClick() {
-							setResponsePage(new RedirectPage("/clubes"));
+							setResponsePage(new RedirectPage("/sites"));
 						}
 
 						@Override
 						public IModel<String> getLabel() {
-							return new Model<String>("Sites");
+							return new Model<String>("Instituciones");
 						}
 
 						@Override
@@ -371,19 +92,12 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 				}
 			});
 
-			
-			
-
-			
 		return menu;
 	}
 	
-	
-	
 	private  NavDropDownMenu<Void> getAboutMenu() {
-		NavDropDownMenu<Void> menu = new NavDropDownMenu<Void>("item", null, new Model<String>("About"));
-
-
+	
+	    NavDropDownMenu<Void> menu = new NavDropDownMenu<Void>("item", null, new Model<String>("Acerca"));
 		
 		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
 			private static final long serialVersionUID = 1L;
@@ -393,12 +107,12 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 					private static final long serialVersionUID = 1L;
 					@Override
 					public void onClick() {
-						setResponsePage(new RedirectPage("/categorias"));
+						setResponsePage(new RedirectPage("https://odilon.io/dellemuse"));
 					}
 
 					@Override
 					public IModel<String> getLabel() {
-						return new Model<String>("About us");
+						return new Model<String>("Acerca");
 					}
 
 					@Override
@@ -416,7 +130,7 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 	
 	private  NavDropDownMenu<Void> getContactMenu() {
 
-		NavDropDownMenu<Void> menu = new NavDropDownMenu<Void>("item", null, new Model<String>("Contact"));
+		NavDropDownMenu<Void> menu = new NavDropDownMenu<Void>("item", null, new Model<String>("Contacto"));
 		
 		menu.addItem(new io.wktui.nav.menu.MenuItemFactory<Void>() {
 
@@ -431,12 +145,12 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 					
 					@Override
 					public void onClick() {
-						setResponsePage(new RedirectPage("/about"));
+					    setResponsePage(new RedirectPage("https://odilon.io/dellemuse"));
 					}
 
 					@Override
 					public IModel<String> getLabel() {
-						return new Model<String>("Contact us");
+						return new Model<String>("Contáctenos");
 					}
 
 					@Override

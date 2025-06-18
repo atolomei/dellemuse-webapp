@@ -1,6 +1,6 @@
 package dellemuse.webapp.website.error;
 
-import jakarta.servlet.http.HttpServletResponse;
+//import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.wicket.request.http.WebResponse;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -18,7 +18,7 @@ public class AccessDeniedPage extends dellemuse.webapp.website.page.BasePage {
 
 	protected void setHeaders(final WebResponse response)
 	{
-		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+		//response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 	}
 	
 	

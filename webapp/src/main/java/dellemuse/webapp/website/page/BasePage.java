@@ -1,6 +1,8 @@
 package dellemuse.webapp.website.page;
 
 
+import java.io.InputStream;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -13,9 +15,18 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 
+import dellemuse.model.ArtExhibitionItemModel;
+import dellemuse.model.ArtWorkModel;
+import dellemuse.model.GuideContentModel;
+import dellemuse.model.ResourceModel;
 import dellemuse.model.logging.Logger;
+import dellemuse.model.util.ThumbnailSize;
+import dellemuse.webapp.ServiceLocator;
+import dellemuse.webapp.db.DBService;
+import dellemuse.webapp.icons.FontAwesome;
 import wktui.bootstrap.Bootstrap;
 
 
@@ -40,6 +51,17 @@ public abstract class BasePage extends WebPage {
 	 // 1 Day
  	static private final int COOKIE_DURATION = 86400 * 1;
  	
+ 	
+ 	  public static JavaScriptResourceReference getJavaScriptPopperResourceReference() {
+ 	     return new JavaScriptResourceReference(BasePage.class,"popper.min.js");
+ 	   }
+ 	  
+
+      public static JavaScriptResourceReference getJavaScriptKbeeResourceReference() {
+          return new JavaScriptResourceReference(BasePage.class,"kbee.js");
+        }
+
+ 	  
 	static {
 		//xfavicon 	 =  PropertiesFactory.getInstance("kbee").getProperties().getProperty("com.novamens.content.web.favicon", "/images/favicon.gif");
 		xlanguage 	 =  "English";
@@ -50,13 +72,17 @@ public abstract class BasePage extends WebPage {
 	//private static final String DEFAULT_LATO_FONTS="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&display=swap";
 	
 	private static final ResourceReference BOOTSTRAP_CSS = Bootstrap.getCssResourceReference();
-	private static final ResourceReference BOOTSTRAP_JS  =Bootstrap.getJavaScriptResourceReference();
+	private static final ResourceReference BOOTSTRAP_JS  = Bootstrap.getJavaScriptResourceReference();
+                                            
+	private static final ResourceReference POPPER_JS  = BasePage.getJavaScriptPopperResourceReference();
+	private static final ResourceReference KBEE_JS     = BasePage.getJavaScriptKbeeResourceReference();
 	
 	
-											
-	private static final ResourceReference FONT_AWESOME_CSS = new CssResourceReference(BasePage.class, "./dellemuse.css");
 	
-	private static final ResourceReference PALETA_CSS = new CssResourceReference(BasePage.class, "./dellemuse.css");
+	//private static final ResourceReference AW = new CssResourceReference(BasePage.class, "./all.min.css");
+	//private static final ResourceReference FONT_AWESOME_CSS = new CssResourceReference(BasePage.class, "./dellemuse.css");
+	
+	private static final ResourceReference CSS = new CssResourceReference(BasePage.class, "./dellemuse.css");
 																					
 	
 	private String keywords    			= xkeywords;
@@ -221,11 +247,30 @@ public abstract class BasePage extends WebPage {
 			response.render(new PriorityHeaderItem(headerItem));
 		}
 	
+		
+		//response.render(JavaScriptHeaderItem.forUrl("popper.min.js"));
+		
+		 
+		response.render(JavaScriptHeaderItem.forReference(POPPER_JS));
+		response.render(JavaScriptHeaderItem.forReference(KBEE_JS));
+		
+		response.render(JavaScriptHeaderItem.forReference(getApplication().getJavaScriptLibrarySettings().getJQueryReference()));
+        response.render(JavaScriptHeaderItem.forReference(getApplication().getJavaScriptLibrarySettings().getWicketAjaxReference()));
+        
+        
 		response.render(CssHeaderItem.forReference(BOOTSTRAP_CSS));
 		response.render(JavaScriptHeaderItem.forReference(BOOTSTRAP_JS));
+
+		//response.render(CssHeaderItem.forReference(AW));
 		
-		response.render(CssHeaderItem.forReference(PALETA_CSS));
+		response.render(CssHeaderItem.forReference(CSS));
 		
+		  
+		
+        //response.render(JavaScriptHeaderItem.forReference(NotyJSReference.INSTANCE));
+        //response.render(JavaScriptHeaderItem.forReference(NotyPackagedJSReference.INSTANCE));
+        //response.render(JavaScriptHeaderItem.forReference(NotyThemeBootstrapJSReference.INSTANCE));
+        
 		
 		if (getCssResource() != null) 
 			response.render(CssHeaderItem.forReference(getCssResource()));
@@ -264,7 +309,66 @@ public abstract class BasePage extends WebPage {
 	protected void setCss(ResourceReference rcss) 			{this.rcss=rcss;}
 	protected ResourceReference getCssResource()			{return rcss;}
 
+	
 
+    protected String getPresignedUrl(ResourceModel photoModel) {
+        try {
+            DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);    
+            Long id = Long.valueOf(photoModel.getId());
+            return db.getClient().getPresignedUrl(id);    
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+}
+
+    
+	protected String getPresignedThumbnailSmall(ResourceModel photo) {
+           try {
+               DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);    
+               Long id = Long.valueOf(photo.getId());
+               return db.getClient().getPresignedThumbnailUrl(id, ThumbnailSize.SMALL);    
+           } catch (Exception e) {
+               throw new RuntimeException(e);
+           }
+       }
+
+	
+    protected InputStream getResourceStream(ResourceModel model) {
+        try {
+            DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);    
+            Long id = Long.valueOf(model.getId());
+            return db.getClient().getResourceStreamById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    
+    protected ArtExhibitionItemModel getArtExhibitionItemModel(GuideContentModel guide) {
+        try {
+            DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
+            ArtExhibitionItemModel item = db.getClient().getArtExhibitionItem(guide.getArtExhibitionItemModel().getId());
+            return  item;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        
+    }
+    
+
+    /**
+     * @return
+     */
+    protected ArtWorkModel getArtWork(GuideContentModel guideContent) {
+        try {
+            DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
+            ArtExhibitionItemModel item = db.getClient().getArtExhibitionItem(guideContent.getArtExhibitionItemModel().getId());
+            return db.getClient().getArtWork(item.getArtworkModel().getId());
+            
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 		/**
 		response.render(JavaScriptHeaderItem.forReference(getApplication().getJavaScriptLibrarySettings().getJQueryReference()));

@@ -55,70 +55,7 @@ public class GlobalFooterPanel<T> extends ModelPanel<T> {
 				});
 		
 		
-		nav.addCollapse(new LinkMenuItem<Void>("item") {
-			
-			private static final long serialVersionUID = 1L;
-			
-			@Override
-			public void onClick() {
-				setResponsePage(new RedirectPage("/torneo/fixture"));
-			}
-
-			@Override
-			public IModel<String> getLabel() {
-				return new Model<String>("Download app");
-			}
-
-			@Override
-			public String getBeforeClick() {
-				return null;
-			}
-		});
 		
-
-
-		nav.addCollapse(new LinkMenuItem<Void>("item") {
-			
-			private static final long serialVersionUID = 1L;
-			
-			@Override
-			public void onClick() {
-				setResponsePage(new RedirectPage("/torneo/tabla"));
-			}
-
-			@Override
-			public IModel<String> getLabel() {
-				return new Model<String>("Sites");
-			}
-
-			@Override
-			public String getBeforeClick() {
-				return null;
-			}
-		});
-
-		
-	      nav.addCollapse(new LinkMenuItem<Void>("item") {
-	            
-	            private static final long serialVersionUID = 1L;
-	            
-	            @Override
-	            public void onClick() {
-	                setResponsePage(new RedirectPage("/contacto"));
-	            }
-
-	            @Override
-	            public IModel<String> getLabel() {
-	                return new Model<String>("About");
-	            }
-
-	            @Override
-	            public String getBeforeClick() {
-	                return null;
-	            }
-	        });
-
-	      
 		
 		nav.addCollapse(new LinkMenuItem<Void>("item") {
 			

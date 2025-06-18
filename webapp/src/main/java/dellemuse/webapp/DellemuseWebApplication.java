@@ -2,15 +2,23 @@ package dellemuse.webapp;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 
 import dellemuse.model.logging.Logger;
 import jakarta.annotation.PostConstruct;
 
 
+
+
+
 @SpringBootApplication
-@ComponentScan({"dellemuse.webapp"})
+@ImportAutoConfiguration(exclude = {
+    com.giffing.wicket.spring.boot.starter.configuration.extensions.stuff.restannotations.RestAnnotationsConfig.class
+})
 public class DellemuseWebApplication {
 			
 	static private Logger logger = Logger.getLogger(DellemuseWebApplication.class.getName());
@@ -35,6 +43,8 @@ public class DellemuseWebApplication {
 		std_logger.info("");
 		for (String s : DellemuseWebVersion.getAppCharacterName())
 			std_logger.info(s);
+		
+		
 		
 		std_logger.info(SEPARATOR);
 		std_logger.info("This software is licensed under the Apache License, Version 2.0");

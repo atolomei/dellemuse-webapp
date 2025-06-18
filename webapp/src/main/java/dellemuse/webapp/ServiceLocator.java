@@ -1,27 +1,30 @@
 package dellemuse.webapp;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Service;
 
 
 /**
  * 
  */
-public class ServiceLocator implements ApplicationContextAware {
+
+@Service
+public class ServiceLocator extends BaseService implements ApplicationContextAware {
 
 	static ServiceLocator instance;
-	
+
+	@Autowired
 	private ApplicationContext applicationContext;
 	
 	static public  ServiceLocator getInstance() {
-		if (instance == null)
-			instance = new ServiceLocator();
 		return instance;
 	}
-	
-	protected ServiceLocator() {
-		
+
+	public ServiceLocator() {
+	    instance=this;
 	}
 	
 	public Object getBean(String name) {

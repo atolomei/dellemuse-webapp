@@ -1,1 +1,9 @@
 /target/
+/tmp
+/logs
+.settings/
+player/
+js/
+*.txt
+
+

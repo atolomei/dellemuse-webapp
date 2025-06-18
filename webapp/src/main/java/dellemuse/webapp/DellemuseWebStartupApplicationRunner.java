@@ -36,6 +36,7 @@ public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 	
 	
 	
+	
 	public DellemuseWebStartupApplicationRunner(ApplicationContext appContext) {
 		this.appContext = appContext;
 		
@@ -59,8 +60,16 @@ public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 		
 		startupLogger.info	(SEPARATOR);
 		
+		Settings settings=appContext.getBean(Settings.class);
+		
+		
+		startupLogger.info    ("App name -> " + settings.getAppName());
+		startupLogger.info    ("Endpoint -> " + settings.getEndpoint());
+		startupLogger.info    ("Port -> "     + settings.getPort());
+		
+		
+		
 		startupLogger.info	("Startup at -> " + DateTimeFormatter.RFC_1123_DATE_TIME.format(OffsetDateTime.now()));
-		startupLogger.info	("done");
 		
 		
 		
