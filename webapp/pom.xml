@@ -66,6 +66,7 @@
 	<dependencies>
 
 		<!-- s. LOGGING ========================================================  -->
+
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -189,18 +190,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.wicketstuff</groupId>
-			<artifactId>wicketstuff-restannotations</artifactId>
-			<version>${wicket-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.wicketstuff</groupId>
-			<artifactId>wicketstuff-restannotations-json</artifactId>
-			<version>${wicket-version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>io</groupId>
 			<artifactId>wktui</artifactId>
 			<version>${wktui-version}</version>
@@ -284,6 +273,11 @@
 		</plugins>
 	</build>
 </project>
+
+
+
+
+
 
 
 <!-- Freemarker =======================================================  -->
@@ -392,3 +386,17 @@
 			<version>${wicket-version}</version>
 			<scope>test</scope>
 		</dependency -->
+
+		
+				<!-- dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>wicketstuff-restannotations</artifactId>
+			<version>${wicket-version}</version>
+		</!dependency -->
+
+		<!-- dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>wicketstuff-restannotations-json</artifactId>
+			<version>${wicket-version}</version>
+		</dependency -->
+
