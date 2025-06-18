@@ -12,7 +12,7 @@
 	<groupId>dellemuse</groupId>
 	<artifactId>dellemuse-webapp</artifactId>
 	<version>main</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>dellemuse-webapp</name>
 	<url>https://odilon.io/dellemuse</url>
 
@@ -28,7 +28,8 @@
 		<commons-validator.version>1.8.0</commons-validator.version>
 		<dellemuse-client-version>0.1-beta</dellemuse-client-version>
 		<dellemuse-model-version>0.1-beta</dellemuse-model-version>
-		<disruptor-version>3.4.4</disruptor-version> 			<!--  01 /2024 version 4.0.0 did not work with LogManager  -->
+		<disruptor-version>3.4.4</disruptor-version> 			<!--  01 /2024 version 4.0.0
+		did not work with LogManager  -->
 		<dropwizard-metrics-version>4.2.25</dropwizard-metrics-version>
 		<jakarta.validation-api-version>3.1.1</jakarta.validation-api-version>
 		<java-version>17</java-version>
@@ -55,7 +56,6 @@
 		</developer>
 	</developers>
 
-
 	<repositories>
 		<repository>
 			<id>my-local-repo</id>
@@ -63,11 +63,9 @@
 		</repository>
 	</repositories>
 
-
 	<dependencies>
 
 		<!-- s. LOGGING ========================================================  -->
-		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -101,7 +99,7 @@
 		</dependency>
 
 		<!-- DELLEMUSE SDK AND MODEL============================================  -->
-		
+
 		<dependency>
 			<groupId>dellemuse</groupId>
 			<artifactId>dellemuse-client</artifactId>
@@ -115,7 +113,7 @@
 		</dependency>
 
 		<!-- MONITOR =========================================================  -->
-		
+
 		<dependency>
 			<groupId>io.dropwizard.metrics</groupId>
 			<artifactId>metrics-core</artifactId>
@@ -123,7 +121,7 @@
 		</dependency>
 
 		<!-- SPRING ========================================================  -->
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -141,7 +139,7 @@
 		</dependency>
 
 		<!-- Add Log4j2 Dependency -->
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
@@ -152,7 +150,6 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -270,7 +267,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>dellemuse.webapp.DellemuseWebApplication</mainClass>
-					<layout>WAR</layout>
+					<layout>JAR</layout>
 				</configuration>
 			</plugin>
 
@@ -286,135 +283,110 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
 
 
+<!-- Freemarker =======================================================  -->
 
-		<!-- Freemarker =======================================================  -->
-
-		<!--dependency>
+<!--dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 		</ dependency -->
 
-		<!-- dependency>
+<!-- dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
 		</ dependency -->
 
-		
-		<!-- dependency>
+
+<!-- dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-security</artifactId>
 		</dependency  -->
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-				<!-- dependency>
+
+
+<!-- dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-ioc</artifactId>
 			<version>${wicket-version}</version>
 		</! dependency -->
 
-		<!-- dependency>
+<!-- dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-auth-roles</artifactId>
 			<version>${wicket-version}</version>
 		</dependency -->
 
-		<!-- dependency>
+<!-- dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-request</artifactId>
 			<version>${wicket-version}</version>
 		</! dependency -->
 
-		<!-- dependency>
+<!-- dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-util</artifactId>
 			<version>${wicket-version}</version>
 		</!dependency -->
 
-		<!-- dependency>
+<!-- dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-spring</artifactId>
 			<version>${wicket-version}</version>
 		</ dependency -->
 
-		<!-- dependency>
+<!-- dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
 			<version>0.10.2</version>
 		</dependency -->
 
-		
-						<!-- com.giffing.wicket.spring.boot.starter EXCLUSIONS -->
-				
-				<!--exclusion>
+
+<!-- com.giffing.wicket.spring.boot.starter EXCLUSIONS -->
+
+<!--exclusion>
 					<groupId>org.apache.wicket</groupId>
 					<artifactId>wicket-ioc</artifactId>
 				</exclusion -->
 
-				<!--  exclusion>
+<!--  exclusion>
 					<groupId>org.apache.wicket</groupId>
 					<artifactId>wicket-auth-roles</artifactId>
 				</xclusion -->
 
-				<!-- exclusion>
+<!-- exclusion>
 					<groupId>org.apache.wicket</groupId>
 					<artifactId>wicket-request</artifactId>
 				</exclusion -->
 
-				<!-- exclusion>
+<!-- exclusion>
 					<groupId>org.apache.wicket</groupId>
 					<artifactId>wicket-util</artifactId>
 				</ exclusion -->
 
-				<!-- exclusion>
+<!-- exclusion>
 					<groupId>org.apache.wicket</groupId>
 					<artifactId>wicket-spring</artifactId>
 				</ exclusionn -->
 
-				
-				
-				<!-- sPRING exclision tomcat -->				
-				<!--exclusions>
+
+<!-- sPRING exclision tomcat -->
+<!--exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-tomcat</artifactId>
 				</exclusion>
 			</exclusions -->
 
-			
-			<!-- Spring include Jetty -->
-			<!-- dependency>
+
+<!-- Spring include Jetty -->
+<!-- dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jetty</artifactId>
 		</ dependency -->
 
 
-
-
-		<!--dependency>
+<!--dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-tester</artifactId>
 			<version>${wicket-version}</version>
