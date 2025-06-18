@@ -8,8 +8,8 @@ import com.giffing.wicket.spring.boot.context.scan.WicketExpiredPage;
 
 import dellemuse.webapp.website.page.BasePage;
 
-//@WicketExpiredPage
-//@MountPath("expired")
+@WicketExpiredPage
+@MountPath("expired")
 public class ExpiredPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;

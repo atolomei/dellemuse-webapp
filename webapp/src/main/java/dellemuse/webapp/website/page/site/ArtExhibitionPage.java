@@ -41,7 +41,7 @@ import io.wktui.struct.list.ListPanel;
  * 
  */
 
-@MountPath("exhibition/${id}")
+@MountPath("/exhibition/${id}")
 public class ArtExhibitionPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;

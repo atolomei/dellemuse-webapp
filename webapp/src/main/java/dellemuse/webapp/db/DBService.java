@@ -31,13 +31,18 @@ public class DBService extends BaseService {
     @PostConstruct
     public void onInit() {
         
-        this.client = new DelleMuseClient(   getSettings().getDellemuseServerEndpoint(),
-                                        getSettings().getDellemuseServerPort(),
-                                        getSettings().getDellemuseServerAccessKey(),
-                                        getSettings().getDellemuseServerSecretKey()
+        if (getSettings().isSimulateServer()) {
+            startuplogger.info("No connection attempt for a simulated server" );
+            return;
+        }
+        
+        this.client = new DelleMuseClient(  getSettings().getDellemuseServerEndpoint(),
+                                            getSettings().getDellemuseServerPort(),
+                                            getSettings().getDellemuseServerAccessKey(),
+                                            getSettings().getDellemuseServerSecretKey()
                                     );
         
-        startuplogger.info("Connected to Server -> ") ;
+        startuplogger.info("Connected to Server -> " + this.client.toString()) ;
         
         try {
             if (!client.ping().equals("ok")) {

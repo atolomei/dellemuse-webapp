@@ -12,7 +12,7 @@
 	<groupId>dellemuse</groupId>
 	<artifactId>dellemuse-webapp</artifactId>
 	<version>main</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<!-- packaging>war</ packaging  -->
 
@@ -506,7 +506,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>dellemuse.webapp.DellemuseWebApplication</mainClass>
-					<layout>JAR</layout>
+					<layout>WAR</layout>
 				</configuration>
 			</plugin>
 

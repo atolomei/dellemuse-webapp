@@ -49,25 +49,23 @@ public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 		if (startupLogger.isDebugEnabled()) {
 			startupLogger.debug("Command line args:");
 			args.getNonOptionArgs().forEach( item -> startupLogger.debug(item));
-			//startupLogger.debug(ServerConstant.SEPARATOR);
 		}
 
 		Locale.setDefault(Locale.ENGLISH);
 		
-		//boolean iGeneral = initGeneral();
-		//if(iGeneral)
-		//	startupLogger.info(ServerConstant.SEPARATOR);
-		
-		startupLogger.info	(SEPARATOR);
+		startupLogger.info(SEPARATOR);
 		
 		Settings settings=appContext.getBean(Settings.class);
-		
 		
 		startupLogger.info    ("App name -> " + settings.getAppName());
 		startupLogger.info    ("Endpoint -> " + settings.getEndpoint());
 		startupLogger.info    ("Port -> "     + settings.getPort());
 		
-		
+		if (settings.isSimulateServer()) {
+		    startupLogger.info(SEPARATOR);
+		    startupLogger.info    ("DELLEMUSE SERVER IS SIMULATED");
+		}
+		startupLogger.info(SEPARATOR);
 		
 		startupLogger.info	("Startup at -> " + DateTimeFormatter.RFC_1123_DATE_TIME.format(OffsetDateTime.now()));
 		

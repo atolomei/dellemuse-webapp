@@ -45,7 +45,7 @@ import io.wktui.struct.list.SimpleGridPanel;
  */
 
 
-@MountPath("site/${id}")
+@MountPath("/site/${id}")
 public class SitePage extends BasePage {
 
 	private static final long serialVersionUID = 1L;

@@ -37,7 +37,7 @@ import io.wktui.struct.list.ListPanel;
  */
 
 
-@MountPath("siteguide/${id}")
+@MountPath("/siteguide/${id}")
 public class SiteGuidePage extends BasePage {
 
     private static final long serialVersionUID = 1L;

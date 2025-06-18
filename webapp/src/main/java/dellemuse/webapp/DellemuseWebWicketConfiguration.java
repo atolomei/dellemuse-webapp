@@ -10,11 +10,8 @@ import com.giffing.wicket.spring.boot.context.extensions.WicketApplicationInitCo
 @ApplicationInitExtension
 public class DellemuseWebWicketConfiguration implements WicketApplicationInitConfiguration {
 
-	@Override
+    @Override
 	public void init(WebApplication webApplication) {
-
 	    webApplication.getCspSettings().blocking().disabled();
-
 	}
-
 }

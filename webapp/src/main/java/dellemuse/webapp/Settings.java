@@ -39,12 +39,15 @@ public class Settings extends BaseService implements SystemService {
     @Value("${dellemuse.server.secretKey:dellemuse}")
     private String dellemuseServerSecretKey;
 
+    @Value("${simulateServer:false}")
+    private boolean simulateServer;
+
+    public boolean isSimulateServer() {
+        return this.simulateServer;
+    }
     
     
     /** DELLEMUSE WEBAPP ----------------------------------------------------- */
-    
-    
-
     
     @Value("${dellemuse.webapp.accessKey:dellemuse}")
     @NonNull
@@ -60,10 +63,6 @@ public class Settings extends BaseService implements SystemService {
     @Value("${dellemuse.webapp.endpoint:http://localhost}")
     @NonNull
     protected String endpoint;
-
-    
-    
-    
     
 	
 	@Value("${scanFreqmillisecs:10000}")

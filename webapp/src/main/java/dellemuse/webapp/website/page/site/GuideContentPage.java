@@ -54,7 +54,7 @@ import wktui.base.InvisiblePanel;
  */
 
 
-@MountPath("content/${id}")
+@MountPath("/content/${id}")
 public class GuideContentPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;

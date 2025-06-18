@@ -16,12 +16,10 @@ import jakarta.annotation.PostConstruct;
 
 
 @SpringBootApplication
-@ImportAutoConfiguration(exclude = {
-    com.giffing.wicket.spring.boot.starter.configuration.extensions.stuff.restannotations.RestAnnotationsConfig.class
-})
 public class DellemuseWebApplication {
 			
-	static private Logger logger = Logger.getLogger(DellemuseWebApplication.class.getName());
+	@SuppressWarnings("unused")
+    static private Logger logger = Logger.getLogger(DellemuseWebApplication.class.getName());
 	static private Logger std_logger = Logger.getLogger("StartupLogger");
 	
 	static public String[] cmdArgs = null;
@@ -34,18 +32,13 @@ public class DellemuseWebApplication {
 		application.setBannerMode(Banner.Mode.OFF);
 		cmdArgs = args;
 		application.run(args);
-		
 	  }
 	
 	@PostConstruct
 	public void onInitialize() {
-		
 		std_logger.info("");
 		for (String s : DellemuseWebVersion.getAppCharacterName())
 			std_logger.info(s);
-		
-		
-		
 		std_logger.info(SEPARATOR);
 		std_logger.info("This software is licensed under the Apache License, Version 2.0");
 		std_logger.info("http://www.apache.org/licenses/LICENSE-2.0");
@@ -53,10 +46,6 @@ public class DellemuseWebApplication {
 		initShutdownMessage();
 	}
 	
-	/**
-	 *
-	 *
-	 */
 	private void initShutdownMessage() {
 	    Runtime.getRuntime().addShutdownHook(new Thread() {
            public void run() {

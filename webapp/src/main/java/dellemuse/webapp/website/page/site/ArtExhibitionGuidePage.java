@@ -55,7 +55,7 @@ import wktui.base.InvisiblePanel;
  * Info - exhibitions
  */
 
-@MountPath("guide/${id}")
+@MountPath("/guide/${id}")
 public class ArtExhibitionGuidePage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
