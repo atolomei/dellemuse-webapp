@@ -1,0 +1,638 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Help</title>
+<style>
+body {
+	font:13px Arial, Helvetica, sans-serif;
+}
+.lbg_list-1 {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	line-height:27px;
+	margin: 0 0 1.5em 0;
+}
+
+.lbg_list-1 li {
+	background-image: url(list-1.png);
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	padding-left: 25px;
+}
+.lbg_list-1 a {
+	text-decoration:underline;
+}
+table {
+	background:#EEEEEE;
+	border-right:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+}
+table td {
+	padding:5px;
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+}
+.row-title {
+	font-weight:bold;
+}
+.lbg_subtitle {
+	color:#21759b;
+	font-weight:bold;
+	font-size:14px;
+}
+.lbg_regGray {
+	font-size:12px;
+	color:#999999;
+	font-style:italic;
+}
+.regb {font-weight:bold;
+}
+</style>
+</head>
+<body>
+<h2><strong>Help</strong></h2>
+<p>This plugin requires at least WordPress 3.0</p>
+<ul class="lbg_list-1">
+  <li><a href="#videotutorials">Video Tutorials</a></li>
+  <li><a href="#instalation">Plugin Instalation</a></li>
+  <li><a href="#structure">Files &amp; Folders Structure</a></li>
+  <li><a href="#manageplayers">Manage Players</a></li>
+  <li><a href="#settings">Player Settings</a></li>
+  <li><a href="#playlist">Playlist</a></li>
+  <li><a href="#facebook_share">FaceBook Share</a></li>
+  <li><a href="#shortcode">ShortCode</a></li>
+  <li>.<a href="#htaccess">htaccess</a></li>
+	<li><a href="#api">API function</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span class="lbg_subtitle"><a name="videotutorials" id="videotutorials"></a>Video Tutorials</span></p>
+<p> Installation – <a href="https://www.youtube.com/watch?v=EmlD9qwd0B0" target="_blank">https://www.youtube.com/watch?v=EmlD9qwd0B0</a><br />
+  How to use the plugin – <a href="https://www.youtube.com/watch?v=8qA3LlLxnPA" target="_blank">https://www.youtube.com/watch?v=8qA3LlLxnPA</a><br />
+  How To Automatically generate the player playlist by reading the folder which contains the MP3 files   – <a href="https://www.youtube.com/watch?v=iBOPpPxQqvw" target="_blank">https://www.youtube.com/watch?v=iBOPpPxQqvw</a></p>
+<p>&nbsp;</p>
+<p class="lbg_subtitle"><a name="instalation" id="instalation"></a>Plugin Instalation</p>
+<p>Step 1. Enter in your wordpress CMS and go to Plugins menu<br />
+Step 2. Under Plugins menu click &quot;Add New&quot;<br />
+Step 3. Select &quot;Upload&quot;, choose the archive lbg-audio7_html5_full_width_sticky_pro.zip.zip that you downloaded and hit &quot;Install Now&quot;<br />
+Step 4. After the plugin is installed click &quot;Activate Plugin&quot;<br />
+Step 5. In you page just add the shortcode: [lbg_audio7_html5 settings_id='1']<br />
+<a href="#shortcode">click here</a> for more details regarding the shortcode</p>
+<p>&nbsp;</p>
+<p class="lbg_subtitle"><a name="structure" id="structure"></a>Files &amp; Folders Structure</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top" class="row-title">css</td>
+    <td align="left" valign="top">the folder contains the .css files used by the pluging</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">images</td>
+    <td align="left" valign="top">the folder contains the images used by the pluging</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">js</td>
+    <td align="left" valign="top">the folder contains the .js files used by the pluging</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">audio7_html5</td>
+    <td align="left" valign="top">the folder contains the .js &amp; .css files that the audio player use</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">tpl</td>
+    <td align="left" valign="top">the folder contains the template files used by the pluging</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">lbg-audio7_html5.php.php</td>
+    <td align="left" valign="top">the plugin itself</td>
+  </tr>
+  <tr>
+    <td width="22%" align="left" valign="top" class="row-title">&nbsp;</td>
+    <td width="78%" align="left" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><span class="lbg_subtitle"><a name="manageplayers" id="playlist2"></a>Manage Players</span></p>
+<p>From this section you can define the players. <br />
+  If you need to include multiple players in your pages with different settings   and playlist you can define the players and manage the settings for each one.<br />
+If you need only one player in your website, just edit the default one.</p>
+<p>&nbsp;</p>
+<p class="lbg_subtitle"><a name="settings" id="settings"></a>Player Settings</p>
+<p>From this section you can define the audio player  settings.</p>
+<table class="wp-list-table widefat fixed pages" cellspacing="0">
+  <tr>
+    <td align="left" valign="top" bgcolor="#CCCCCC" class="row-title" width="30%">Attribute</td>
+    <td align="left" valign="top" bgcolor="#CCCCCC" class="row-title" width="70%">Description</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top" class="lbg_regGray">General settings</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title"> Skin</td>
+    <td align="left" valign="top">The audio player comes with 2 predefined controllers skins (white and black). By controllers we understand rewind, play, pause, previous, next, volume, shuffle, download, facebook, twitter, show/hide playlist buttons. These buttons are saved as .png images. If you need another color for these controllers, you have the PSD files included and you can save over one skin, the controllers with another color.
+      <p>Possible values:<br />
+        - whiteControllers<br />
+    - blackControllers</p></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Responsive<br /></td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the player will responsive<br />
+      <strong>false</strong> - the player will not be responsive</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Sticky</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the audio player will be positioned on the bottom of the page beeing fixed while the page scrolls<br />
+      <strong>false</strong> - the audio player will NOT be positioned on the bottom of the page beeing fixed while the page scrolls</td>
+  </tr>
+	<tr>
+    <td align="left" valign="top" class="row-title">Start Minified</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the audio player start minified and only 'show/hide' button will visible.<strong> If you set this parameter true you also need to set <span class="regb">Sticky</span>:true</strong><br />
+    <strong>false</strong> - the audio player will start with the normal/standard dimension.</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Continuous Playback</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - When you'll change the page, the player will continue from the previous   minute. Also, the volume will remain as previously set. This will ensure   a smooth playback across your entire webiste.<br />
+      <strong>false</strong> - When you'll change the page, the player will NOT continue from the previous   minute.</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Initial Volume<br /></td>
+    <td align="left" valign="top">You can initialize the volume. The range is 0 to 1</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Auto Play</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - autoplays audio file<br />
+      <strong>false</strong> - doesn't autoplay audio file</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Loop</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - starts next audio file after current audio file has finished<br />
+      <strong>false</strong> - doesn't start next audio file after current audio file has finished</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Shuffle</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the playlist will be played in shuffle mode<br />
+    <strong>false</strong> - the playlist will be played in normal mode</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Player Background</td>
+    <td align="left" valign="top">Player background color (hexa) or choose an image as background</td>
+  </tr>
+  <tr>
+    <td width="16%" align="left" valign="top" class="row-title">Empty Buffer Color</td>
+    <td width="69%" align="left" valign="top">Player buffer color (hexa)- empty state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Full Buffer Color</td>
+    <td align="left" valign="top">Player buffer color (hexa) - full state state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Seekbar Color</td>
+    <td align="left" valign="top">Seekbar color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Volume Off State Color</td>
+    <td align="left" valign="top">Volume slide color (hexa) - off state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Volume On State Color</td>
+    <td align="left" valign="top">Volume slide color (hexa) - on state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Timer Color</td>
+    <td align="left" valign="top">Timer color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Song Title - Text Color</td>
+    <td align="left" valign="top">Audio file Title text area color (hexa) which resides next to the image</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Song Author -Text Color</td>
+    <td align="left" valign="top">Audio file Author text area color (hexa) which resides next to the image</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Bars Color</td>
+    <td align="left" valign="top">The bars animation color</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">FaceBook AppID</td>
+    <td align="left" valign="top">FaceBook AppID. Please check <a href="#facebook_share">Facebook Share</a> section, for more informations</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Face Book Share Title</td>
+    <td align="left" valign="top">The title which will appear on FaceBook share. Please check <a href="#facebook_share">Facebook Share</a> section, for more informations</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">FaceBook Share Description</td>
+    <td align="left" valign="top">The description which will appear on FaceBook share. Please check <a href="#facebook_share">Facebook Share</a> section, for more informations</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Activate Google Analytics Traking</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - Google Analytics tracking will be enabled<br />
+      <strong>false</strong> - Google Analytics tracking will be disabled</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Your Google Analytics Traking Code <em><br />
+    </em></td>
+    <td align="left" valign="top">Your  Google Analytics code.<br />
+      Example: UA-3245593-1</td>
+  </tr>
+	<tr>
+		<td align="left" valign="top" class="regb">Show 'Clear Favorites' Button</td>
+		<td align="left" valign="top">Possible values: <br />
+			<strong>true</strong> - you'll activate the favorite button for each playlist item & clear favorites button
+			which will allow you to create a playlist of favorites audio files or to clear the favorite audio files playlist.<br />
+			<strong>false</strong> - no favorite buttons will appear</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" class="regb">Favorites Cookie Expiration Time</td>
+		<td align="left" valign="top">You can set how much time (in days) the favorite audio files playlist will last on client computer.</td>
+	</tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Popup Width</td>
+    <td align="left" valign="top">The initial popup window width</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Popup Height</td>
+    <td align="left" valign="top">The initial popup window height</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top" class="lbg_regGray">Controllers Settings: Show/Hide buttons &amp; elements</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Vinyl Record</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the vinyl record animation will appear<br />
+      <strong>false</strong> - the artist image defind in the playlist, will appear. Example: &lt;li class=&quot;ximage&quot;&gt;audio/images/p1.jpg&lt;/li&gt;</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Rewind Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - rewind button will appear<br />
+      <strong>false</strong> - rewind button will not appear</td>
+  </tr>
+	<tr>
+    <td align="left" valign="top" class="row-title">Show Next & Previous Buttons</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - next & previous buttons will appear<br />
+      <strong>false</strong> - next & previous buttons will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Shuffle Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - shuffle button will appear<br />
+      <strong>false</strong> - shuffle button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Download Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - download button will appear<br />
+      <strong>false</strong> - download track button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Facebook Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - facebook button will appear<br />
+    <strong>false</strong> - facebook button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Twitter Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - twitter button will appear<br />
+    <strong>false</strong> - twitter button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Buy Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - buy lyrics will appear<br />
+    <strong>false</strong> - buy lyrics button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Buy Button Title</td>
+    <td align="left" valign="top">The lyrics button title</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Buy Button Target</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>'_blank'</strong> - the buy link will open in a new window<br />
+    <strong>'_self'</strong>- the buy link will open in the same window</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Lyrics Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - twitter button will appear<br />
+    <strong>false</strong> - twitter button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Lyrics Button Title</td>
+    <td align="left" valign="top">The buy button title </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Lyrics Button Target</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>'_blank'</strong> - the lyrics link will open in a new window<br />
+    <strong>'_self'</strong>- the buy lyrics will open in the same window</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Author</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - audio track  Author will appear<br />
+    <strong>false</strong> - audio track  Author will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Title</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - audio track  Title will appear<br />
+    <strong>false</strong> - audio track  Title will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Popup Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the popup button will appear<br />
+      <strong>false</strong>- the popup   button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Playlist Button</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - show/hide playlist button will appear<br />
+      <strong>false</strong> - show/hide playlist  button will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top" class="lbg_regGray">Playlist  Settings</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Playlist</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - playlist will appear<br />
+    <strong>false</strong> - playlist will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Playlist On Init</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - playlist will appear on init<br />
+    <strong>false</strong> - playlist will not appear on init</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Top Position</td>
+    <td align="left" valign="top">Playlist distance from the audio player</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Background Color</td>
+    <td align="left" valign="top">Playlist background color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Record Background Off Color</td>
+    <td align="left" valign="top">Playlist item background color (hexa) - OFF state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Record Background On Color</td>
+    <td align="left" valign="top">Playlist item background color (hexa) - ON state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Record Bottom Border Off Color</td>
+    <td align="left" valign="top">Playlist item bottom border color (hexa) - OFF state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Record Bottom Border On Color</td>
+    <td align="left" valign="top">Playlist item bottom border color (hexa) - ON state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Record Text Off Color</td>
+    <td align="left" valign="top">Playlist item text color (hexa) - OFF state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Record Text On Color</td>
+    <td align="left" valign="top">Playlist item text color (hexa) - ON state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Number Of Items Per Screen</td>
+    <td align="left" valign="top">Number of items shown in the playlist. You'll have to scroll to see the rest</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist Padding</td>
+    <td align="left" valign="top">Playlist inner padding</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Playlist Number</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the item number in the playlist will appear<br />
+    <strong>false</strong> - the item number in the playlist will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Search Area</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the search area will appear<br />
+      <strong>false</strong> - the search area  will not appear </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Search Area Background Color</td>
+    <td align="left" valign="top">Search area  background color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Search Input Text</td>
+    <td align="left" valign="top">Search input initial text, useful for translation purpose</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Search Input Background Color</td>
+    <td align="left" valign="top">Search input  background color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Search Input Border Color</td>
+    <td align="left" valign="top">Search input  border color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Search Input Text Color</td>
+    <td align="left" valign="top">Search input  text color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Search Inside Author Field</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - it will search in author filed, too<br />
+    <strong>false</strong> - it will not search in author filed</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left" valign="top" class="lbg_regGray">Category  Settings</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Show Categories</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>true</strong> - the categories will appear<br />
+      <strong>false</strong> - the categories will not appear</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">First Selected Category</td>
+    <td align="left" valign="top">The name of the first displayed category (in the top of the playlist). If no value is selected, since the categories will be alphabetically ordered,  the first one will be displayed as the first selected category</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Selected Categ Background Color</td>
+    <td align="left" valign="top">Selected category background color (hexa)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Selected Categ Off Color</td>
+    <td align="left" valign="top">Selected category color (hexa) - OFF state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Selected Categ On Color</td>
+    <td align="left" valign="top">Selected category color (hexa) - ON state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Selected Category Bottom Margin </td>
+    <td align="left" valign="top">Selected category bottom margin</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Category Record Background Off Color</td>
+    <td align="left" valign="top">Category item background color (hexa) - OFF state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Category Record Background On Color</td>
+    <td align="left" valign="top">Category item background color (hexa) - ON state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Category Record Bottom Border Off Color</td>
+    <td align="left" valign="top">Category item bottom border color (hexa) - OFF state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Category Record Bottom Border On Color</td>
+    <td align="left" valign="top">Category item bottom border color (hexa) - ON state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Category Record Text Off Color</td>
+    <td align="left" valign="top">Category item text color (hexa) - OFF state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Category Record Text On Color</td>
+    <td align="left" valign="top">Category item text color (hexa) - ON state</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><span class="lbg_subtitle"><a name="playlist" id="playlist"></a>Playlist</span></p>
+<table class="wp-list-table widefat fixed pages" cellspacing="0">
+  <tr>
+    <td width="30%" align="left" valign="top" class="row-title"></td>
+    <td width="70%" align="left" valign="top"></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Title</td>
+    <td align="left" valign="top">audio file title</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Author</td>
+    <td align="left" valign="top">audio file author</td>
+  </tr>
+	<tr>
+    <td align="left" valign="top" class="row-title">Author Link (Optional)</td>
+    <td align="left" valign="top">you can define for the song author a link</td>
+  </tr>
+	<tr>
+    <td align="left" valign="top" class="row-title">Author Link Target (Optional)</td>
+    <td align="left" valign="top">Possible values: <br />
+      <strong>_blank</strong> - the song author link will be opened in a new window<br />
+      <strong>_self</strong> - the song author link will be opened in the same window
+		</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Category</td>
+    <td align="left" valign="top">audio file category. An audio file can belong to multiple categories</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Playlist image</td>
+    <td align="left" valign="top">audio file author <span class="row-title">playlist image</span></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Buy Link</td>
+    <td align="left" valign="top">buy link</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">Lyrics Link</td>
+    <td align="left" valign="top">lyrics link</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">MP3 file (Chrome, IE, Safari) </td>
+    <td align="left" valign="top">.mp3 file name.</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">OGG (Firefox &amp; Opera)</td>
+    <td align="left" valign="top">.ogg file name.</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="row-title">&nbsp;</td>
+    <td align="left" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span class="lbg_subtitle"><a name="facebook_share" id="facebook_share"></a>7. FaceBook Share</span></p>
+<p>In order for the Facebook share button to work you need to obtain a Facebook Application ID</p>
+<p>1. Go to the <a href="https://developers.facebook.com/apps" target="_blank">Facebook Developers Apps page</a> and and sign in with your Facebook username and password.</p>
+<p>2. Click the &quot;Add a New App&quot; button.</p>
+<p><i>If you do not see the option to create a new app in the upper right hand corner, click on &quot;Register as Developer.&quot;</i></p>
+<p>3. After that you'll obtain an 'App ID' which you'll edit <span class="row-title">Facebook App ID</span> parameter from  Manage Players->Player Settings area of our plugin.</p>
+<p>4. Go to Settings->Basic tab (left area), select 'Website' and insert your website URL and fill all the other information. Below you have a demo screenshot. Of course, you'll use your own info.</p>
+<p><img src="facebookAppId.jpg" width="1600" height="1511" alt="facebook appid" /></p>
+<p>5. Go to Settings->Advanced tab (left area) and activate 'Social Discovery'</p>
+<p><img src="status_and_review.jpg" width="1600" height="770" alt="status and review" /></p>
+<p>6. To personalize more the share content you can use FaceBook Share Title	and FaceBook Share Description	fields in Manage Players->Player Settings area of our plugin. Please check <a href="#settings">Player Settings</a> section, to see all available parameters</p>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span class="lbg_subtitle"><a name="shortcode" id="shortcode"></a>ShortCode</span></p>
+<p>The shortcode is: <br />
+[lbg_audio7_html5 settings_id='1']<br />
+where <br />
+settings_id is the player ID defined in &quot;Manage Players&quot; section</p>
+<p>&nbsp;</p>
+<p><span class="lbg_subtitle"><a name="htaccess" id="htaccess"></a>.htaccess</span></p>
+<p>If you need to increase the wordpress media library upload file size limit add the following definitions in the .htaccess file</p>
+<p>&lt;IfModule mod_php5.c&gt;<br />
+  php_value post_max_size           10M<br />
+  php_value upload_max_filesize     40M<br />
+  php_value memory_limit            500M<br />
+  &lt;/IfModule&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr size="1" width="100%" noshade="noshade" />
+<p class="lbg_subtitle"><a name="api" id="api"></a>API function</p>
+<p>1. You can load a new song by adding a javascript function to a button on the page.</p>
+<p>jQuery.audio7_html5.changeMp3('mp3_url','song_name','song_author','image_url');</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Example:</p>
+<textarea rows="3" style="width:100%;"><a href="javascript:void(0)" onclick="jQuery.audio7_html5.changeMp3('http://www.domain_name.com/some_optional_path/file_name.mp3','The Song Name','The Song Author','http://www.domain_name.com/some_optional_path/file_name.jpg');" >test button</a></textarea>
+<p>&nbsp;</p>
+<p>2. You can change the category by adding a javascript function to a button on the page.</p>
+<p>jQuery.audio7_html5.changePlaylist('category_title');</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Example:</p>
+<textarea rows="3" style="width:100%;"><a href="javascript:void(0)" onclick="jQuery.audio7_html5.changePlaylist('Classic');">Select Classic Category</a></textarea>
+<p>&nbsp;</p>
+</body>
+</html>

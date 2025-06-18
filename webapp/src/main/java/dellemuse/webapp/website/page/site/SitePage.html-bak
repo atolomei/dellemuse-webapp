@@ -1,0 +1,287 @@
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+
+		<section wicket:id="top-panel" />
+
+		<section class="container main">
+
+			<div style="float: left; width: 100%;" wicket:id="page-header"></div>
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+
+
+					<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h3>Descripción</h3>
+					</div>
+					<div class="ps-3 pe-3 pt-3 pb-3" wicket:id="site"></div>
+				</div>
+			</div>
+
+
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>Dirección</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						Avenida del Libertador 1473, Ciudad Autónoma de Buenos Aires<br />
+						<a href="#">Instrucciones</a>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>Horarios</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+
+						Lunes: cerrado <br /> Martes: de 11:00 a 19:30<br /> Miércoles:
+						de 11:00 a 19:30<br /> Jueves: de 11:00 a 19:30<br /> Viernes:
+						de 11:00 a 19:30<br /> Sábado: de 10:00 a 19:30<br /> Domingo:
+						de 10:00 a 19:30<br />
+
+					</div>
+				</div>
+			</div>
+
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h3>Fotos</h3>
+					</div>
+				</div>
+
+				<div class="border pt-3 -pb-0 ps-3 pe-3">
+					<div class="row">
+						<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+							<a class="mb-3" wickesst:id="image-link"
+								style="float: left; width: 100%; min-height: 160px; background: #eeeeef; padding: 0.5em;"
+								href="#"> </a>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+							<a class="mb-3" wickesst:id="image-link"
+								style="float: left; width: 100%; min-height: 160px; background: #eeeeef; padding: 0.5em;"
+								href="#"> </a>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+							<a class="mb-3" wickesst:id="image-link"
+								style="float: left; width: 100%; min-height: 160px; background: #eeeeef; padding: 0.5em;"
+								href="#"> </a>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+							<a class="mb-3" wickesst:id="image-link"
+								style="float: left; width: 100%; min-height: 160px; background: #eeeeef; padding: 0.5em;"
+								href="#"> </a>
+						</div>
+
+
+						<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+							<a class="mb-3" wickesst:id="image-link"
+								style="float: left; width: 100%; min-height: 160px; background: #eeeeef; padding: 0.5em;"
+								href="#"> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>Exposiciones</h3>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div style="float: left; width: 100%;" wicket:id="exhibitions"></div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>Colección permanente</h3>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div style="float: left; width: 100%;" wicket:id="collection"></div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>Novedades</h3>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div style="float: left; width: 100%;" wicket:id="news"></div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+			<!-- 
+
+			<div class="mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>Novedades</h3>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xxl-4 col-xl-4 col-lg-6 c col-md-12 col-sm-12">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<a class="mb-2 mb-lg-0"
+									style="float: left; width: 100%; min-height: 220px; background: #eeeeef; padding: 0.5em;"
+									href="#"></a>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="mt-2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<h4>Catálogos en línea</h4>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<p>Ya están disponibles las publicaciones de las muestras
+									dedicadas a Joaquín Torres García, Alfredo Hlito, Raquel
+									Forner, "Escenas contemporáneas" y “Bellas Artes/Bon Marché”.</p>
+								<p>
+									Nuevos catálogos digitales de muestras recientes organizadas
+									por el Museo Nacional de Bellas Artes se suman a las más de
+									treinta publicaciones compartidas en línea desde 2020, con el
+									objetivo de poner a disposición de los usuarios los textos
+									críticos, las investigaciones, las cronologías y el cuerpo de
+									obra de las principales exhibiciones realizadas en los últimos
+									años. Todos los materiales pueden verse ingresando en <a
+										href="#">www.bellasartes.gob.ar/publicaciones</a>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xxl-4 col-xl-4 col-lg-6 c col-md-12 col-sm-12">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<a class="mb-2 mb-lg-0"
+									style="float: left; width: 100%; min-height: 220px; background: #eeeeef; padding: 0.5em;"
+									href="#"></a>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="mt-2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<h4>Visita guiada “Desafíos del siglo XX”</h4>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<p>Un recorrido por las obras de las vanguardias artísticas
+									para comprender una nueva manera de percibir e interpretar las
+									imágenes. A cargo de Florencia Stáffora y Daniela Guido.
+
+									Miércoles y viernes (excepto el 2) de mayo, a las 18. La
+									actividad es gratuita. Punto de encuentro: hall central, 15
+									minutos antes del inicio.</p>
+									
+									<p><a href="#">Ver todas las visitas guiadas</a></p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-xxl-4 col-xl-4 col-lg-6 c col-md-12 col-sm-12">
+
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<a class="mb-2 mb-lg-0"
+									style="float: left; width: 100%; min-height: 220px; background: #eeeeef; padding: 0.5em;"
+									href="#"></a>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="mt-2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<h4>Infancias: “¿Dónde viven las historias?”</h4>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<p>Un ciclo de cuentos que se entrelazan con las obras de
+									artistas como Foujita y Santantonín, entre otros artistas de la
+									colección. Siempre acompañados del títere Lila, su hermosa
+									biblioteca rodante y su flamante máquina de escribir. A cargo
+									de Roxana Pruzan. Sábados 3, 17 y 31 de mayo, a las 17. Domingo
+									4 de mayo, a las 17. Actividad participativa para chicas y
+									chicos de 5 a 10 años. La actividad es gratuita. Punto de
+									encuentro: hall central, 15 minutos antes del inicio.</p>
+									
+									<p>Sábado 31 de mayo de 2025 a las 17 h</p>
+									
+									<p><a href="#">Más Información sobre el evento</a></p> 
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			 -->
+
+
+		</section>
+
+
+		<section style="width: 100%; float: left;" wicket:id="footer-panel" />
+
+
+	</wicket:extend>
+</body>
+</html>
+
+
+
