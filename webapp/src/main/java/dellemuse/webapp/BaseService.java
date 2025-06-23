@@ -1,8 +1,6 @@
 package dellemuse.webapp;
 
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -13,13 +11,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dellemuse.model.logging.Logger;
 import dellemuse.model.util.Constant;
 
-
 public class BaseService extends dellemuse.model.JsonObject {
 
 		static private Logger logger = Logger.getLogger(BaseService.class.getName());
-		
-		//@JsonIgnore
-		//static final private RandomIDGenerator idGenerator = new RandomIDGenerator();
 		
 		@JsonIgnore
 		static final private ObjectMapper mapper = new ObjectMapper();
@@ -29,10 +23,6 @@ public class BaseService extends dellemuse.model.JsonObject {
 			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			mapper.registerModule(new Jdk8Module());
 		}
-
-		//static protected String randomString(final int size) {
-		//	return idGenerator.randomString(size);
-		//}
 		
 		@JsonIgnore
 		private ServiceStatus status;
@@ -67,9 +57,7 @@ public class BaseService extends dellemuse.model.JsonObject {
 			}
 		  }
 	  
-		
 		public ObjectMapper getObjectMapper() {
 			return mapper;
 		}
-
 }

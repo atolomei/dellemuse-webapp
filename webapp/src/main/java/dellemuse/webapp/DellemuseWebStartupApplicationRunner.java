@@ -1,7 +1,5 @@
 package dellemuse.webapp;
 
-
-
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -17,15 +15,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import dellemuse.model.logging.Logger;
 
 
-
-
 @Component
 public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 
 	@SuppressWarnings("unused")
 	static private Logger logger = Logger.getLogger(DellemuseWebStartupApplicationRunner.class.getName());
 	static private Logger startupLogger = Logger.getLogger("StartupLogger");
-
 	
 	static public final String SEPARATOR = "---------------------------------";
 	
@@ -33,15 +28,9 @@ public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 	@JsonIgnore
 	private final ApplicationContext appContext;
 
-	
-	
-	
-	
 	public DellemuseWebStartupApplicationRunner(ApplicationContext appContext) {
 		this.appContext = appContext;
-		
 	}
-	
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -68,16 +57,9 @@ public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 		startupLogger.info(SEPARATOR);
 		
 		startupLogger.info	("Startup at -> " + DateTimeFormatter.RFC_1123_DATE_TIME.format(OffsetDateTime.now()));
-		
-		
-		
-		
 	}
-	
 	
 	public ApplicationContext getAppContext() {
 		return appContext;
 	}
-	
-	
 }

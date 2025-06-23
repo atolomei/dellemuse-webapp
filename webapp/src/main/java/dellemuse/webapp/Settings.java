@@ -10,32 +10,33 @@ import org.springframework.lang.NonNull;
 import dellemuse.model.logging.Logger;
 import jakarta.annotation.PostConstruct;
 
-
 @Configuration
 // @PropertySource("classpath:application.properties")
 public class Settings extends BaseService implements SystemService {
-	
-	static private Logger logger = Logger.getLogger(Settings.class.getName());
-	static private Logger startuplogger = Logger.getLogger("StartupLogger");
-	
-	private static final OffsetDateTime systemStarted = OffsetDateTime.now();
-	
-	
-	/** DELLEMUSE SERVER ----------------------------------------------------- */
-	
+
+    @SuppressWarnings("unused")
+    static private Logger logger = Logger.getLogger(Settings.class.getName());
+
+    @SuppressWarnings("unused")
+    static private Logger startuplogger = Logger.getLogger("StartupLogger");
+
+    private static final OffsetDateTime systemStarted = OffsetDateTime.now();
+
+    /** DELLEMUSE SERVER ----------------------------------------------------- */
+
     @Value("${dellemuse.server.port:9876}")
     private int dellemuseServerPort;
-	
+
     @Value("${dellemuse.server.endpoint:http://localhost}")
     private String dellemuseServerEndpoint;
-	
+
     @Value("${dellemuse.server.ssl:false}")
     private String dellemuseServerSslStr;
     private boolean dellemuseServerSsl;
-    
+
     @Value("${dellemuse.server.accessKey:dellemuse}")
     private String dellemuseServerAccessKey;
-    
+
     @Value("${dellemuse.server.secretKey:dellemuse}")
     private String dellemuseServerSecretKey;
 
@@ -45,73 +46,72 @@ public class Settings extends BaseService implements SystemService {
     public boolean isSimulateServer() {
         return this.simulateServer;
     }
-    
-    
+
     /** DELLEMUSE WEBAPP ----------------------------------------------------- */
-    
+
     @Value("${dellemuse.webapp.accessKey:dellemuse}")
     @NonNull
     protected String accessKey;
-        
+
     @Value("${dellemuse.webapp.secretKey:dellemuse}")
     @NonNull
     protected String secretKey;
 
     @Value("${server.port:8091}")
     protected int port;
-    
+
     @Value("${dellemuse.webapp.endpoint:http://localhost}")
     @NonNull
     protected String endpoint;
-    
-	
-	@Value("${scanFreqmillisecs:10000}")
-	private int scanFreqMillisecs;
 
-	public int getScanFreqMillisecs() {return this.scanFreqMillisecs;}
-	
-	@Value("${templates:null}")
-	private String templatesDir;
-	
-	@Value("${export:null}")
-	private String exportDir;
-	
-	@Value("${data:null}")
-	private String dataDir;
+    @Value("${scanFreqmillisecs:10000}")
+    private int scanFreqMillisecs;
 
-	@Value("${indexexport:null}")
-	private String indexExportDir;
-	
-	// SERVER ------------------------
-		
-		
-	@Autowired
-	public Settings() {
-	}
+    public int getScanFreqMillisecs() {
+        return this.scanFreqMillisecs;
+    }
 
-	@PostConstruct
-	protected void init() {
+    @Value("${templates:null}")
+    private String templatesDir;
 
-		if (templatesDir==null || (templatesDir.trim().length()==0) || templatesDir.trim().equals("null"))
-			templatesDir="templates";
-		templatesDir=templatesDir.trim();
-		
-		if (exportDir==null || exportDir.trim().length()==0 || exportDir.trim().equals("null"))
-			exportDir="export";
-		exportDir=exportDir.trim();
-		
-		if (dataDir==null || dataDir.trim().length()==0  || dataDir.trim().equals("null"))
-			dataDir="data";
-		dataDir=dataDir.trim();
-		
-		if (indexExportDir==null || indexExportDir.trim().length()==0 || indexExportDir.trim().equals("null"))
-			indexExportDir="torneos-web";
-		
-		indexExportDir=indexExportDir.trim();
-		
-		dellemuseServerSsl=dellemuseServerSslStr.equals("true");
-		
-	}
+    @Value("${export:null}")
+    private String exportDir;
+
+    @Value("${data:null}")
+    private String dataDir;
+
+    @Value("${indexexport:null}")
+    private String indexExportDir;
+
+    // SERVER ------------------------
+
+    @Autowired
+    public Settings() {
+    }
+
+    @PostConstruct
+    protected void init() {
+
+        if (templatesDir == null || (templatesDir.trim().length() == 0) || templatesDir.trim().equals("null"))
+            templatesDir = "templates";
+        templatesDir = templatesDir.trim();
+
+        if (exportDir == null || exportDir.trim().length() == 0 || exportDir.trim().equals("null"))
+            exportDir = "export";
+        exportDir = exportDir.trim();
+
+        if (dataDir == null || dataDir.trim().length() == 0 || dataDir.trim().equals("null"))
+            dataDir = "data";
+        dataDir = dataDir.trim();
+
+        if (indexExportDir == null || indexExportDir.trim().length() == 0 || indexExportDir.trim().equals("null"))
+            indexExportDir = "torneos-web";
+
+        indexExportDir = indexExportDir.trim();
+
+        dellemuseServerSsl = dellemuseServerSslStr.equals("true");
+
+    }
 
     public String getTemplatesDir() {
         return templatesDir;
@@ -164,10 +164,11 @@ public class Settings extends BaseService implements SystemService {
     public void setEndpoint(String url) {
         this.endpoint = url;
     }
+
     public OffsetDateTime getSystemStartTime() {
         return systemStarted;
     }
-    
+
     public String getAccessKey() {
         return accessKey;
     }
@@ -179,7 +180,7 @@ public class Settings extends BaseService implements SystemService {
     public String getEndpoint() {
         return endpoint;
     }
-    
+
     public int getPort() {
         return port;
     }
@@ -227,6 +228,5 @@ public class Settings extends BaseService implements SystemService {
     public String getAppName() {
         return "Web Application for Service Management";
     }
-    
 
 }

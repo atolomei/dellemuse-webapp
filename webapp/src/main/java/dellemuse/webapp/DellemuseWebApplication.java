@@ -2,17 +2,10 @@ package dellemuse.webapp;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 
 import dellemuse.model.logging.Logger;
 import jakarta.annotation.PostConstruct;
-
-
-
 
 
 @SpringBootApplication
@@ -25,9 +18,7 @@ public class DellemuseWebApplication {
 	static public String[] cmdArgs = null;
 	static public final String SEPARATOR = "---------------------------------";
 	
-
 	public static void main(String[] args) throws Exception {
-	    
 		SpringApplication application = new SpringApplication(DellemuseWebApplication.class);
 		application.setBannerMode(Banner.Mode.OFF);
 		cmdArgs = args;
