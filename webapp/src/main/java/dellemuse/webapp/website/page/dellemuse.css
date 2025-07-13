@@ -52,6 +52,21 @@ a.listItemLink {text-decoration: none; color: inherit;}
  
  .dellemuse .breadcrumb  .dropdown-item { text-wrap: auto; }
  
+ 
+ 
+.dellemuse .btn-lg, 
+.dellemuse .btn-group-lg > .btn {
+	font-size: 0.88rem;
+	padding-left: 3em;
+	padding-right: 3em;
+	border-radius:8px;
+}
 
+	
+    
+    
+
+
+  
  
  

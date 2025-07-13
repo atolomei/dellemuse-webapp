@@ -65,7 +65,19 @@
 			<appender-ref ref="startup"/>
 		</Logger>
 		
+		
+		<Logger name="dellemuse.webapp" level="debug" additivity="false">
+			<AppenderRef ref="Console"/>
+			<appender-ref ref="dellemuseweb"/>
+		</Logger>
  
+ 
+ 		<Logger name="io.wktui" level="debug" additivity="false">
+			<AppenderRef ref="Console"/>
+			<appender-ref ref="dellemuseweb"/>
+		</Logger>
+		
+		
 		
 	</loggers>
 			

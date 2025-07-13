@@ -1,28 +1,30 @@
+<!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
 <body>
 	<wicket:extend>
+
 		<section wicket:id="top-panel" />
+
 		<section class="container main">
 
-			<!-- div class="mb-4" style="float: left; width: 100%; padding: 0;">
-				<div class="row">
-					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
-						esta es la portada</div>
-				</div>
-			</div-->
-			
 			<div class="mt-4 mb-4" style="float: left; width: 100%; padding: 0;">
 				<div class="row">
 					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
-						<div style="float: left; width: 100%;" wicket:id="sites"></div>
+						<form wicket:id="signupForm">
+							<div wicket:id="firstName"></div>
+							<div wicket:id="lastName"></div>
+							<div wicket:id="password"></div>
+							<div wicket:id="email"></div>
+							<div wicket:id="phone"></div>
+						</form>
+						
+						<div wicket:id="buttons" />	
 					</div>
 				</div>
 			</div>
 		</section>
-		<section style="float:left; width:100%;" wicket:id="footer-panel" />
+		<section style="float: left; width: 100%;" wicket:id="footer-panel" />
+
 	</wicket:extend>
 </body>
 </html>
-
-
-

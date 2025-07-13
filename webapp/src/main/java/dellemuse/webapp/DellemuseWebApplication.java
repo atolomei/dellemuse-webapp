@@ -40,7 +40,8 @@ public class DellemuseWebApplication {
 	private void initShutdownMessage() {
 	    Runtime.getRuntime().addShutdownHook(new Thread() {
            public void run() {
-           	std_logger.info("");
+            std_logger.info(SEPARATOR);
+            std_logger.info("");
            	std_logger.info("As the roman legionaries used to say when falling in battle");
            	std_logger.info("'Dulce et decorum est pro patria mori'...Shuting down... goodbye.");
            	std_logger.info("");

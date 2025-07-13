@@ -38,12 +38,12 @@ public class DellemuseWebHomePage extends BasePage {
     
     public DellemuseWebHomePage(PageParameters parameters) {
         super(parameters);
-        isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(Settings.class).isSimulateServer();
+        this.isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(Settings.class).isSimulateServer();
     }
 
     public DellemuseWebHomePage() {
         super();
-        isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(Settings.class).isSimulateServer();
+        this.isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(Settings.class).isSimulateServer();
     }
 
     @Override
@@ -53,8 +53,7 @@ public class DellemuseWebHomePage extends BasePage {
         add(new GlobalTopPanel<>("top-panel"));
         add(new GlobalFooterPanel<>("footer-panel"));
         
-        
-        if (isServerSimulated) {
+        if (this.isServerSimulated) {
             add(new LabelPanel("sites", new Model<String>("Server is simulated")));
             return;
         }
@@ -77,7 +76,7 @@ public class DellemuseWebHomePage extends BasePage {
                     }
 
                     protected IModel<String> getInfo(IModel<SiteModel> model) {
-                        String info = model.getObject().getIntro() != null ? TextCleaner.clean(model.getObject().getIntro(), 220) : "";
+                        String info = model.getObject().getIntro() != null ? TextCleaner.clean(model.getObject().getIntro(), 120) : "";
                         return new Model<String>((info));
                     }
 

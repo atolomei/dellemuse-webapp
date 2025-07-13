@@ -45,7 +45,7 @@ public class DBService extends BaseService {
             } else {
                 if (this.client.getHttpUrl() != null) {
                     startuplogger.info(Constant.SEPARATOR);
-                    startuplogger.info("Connected to Server -> " + this.client.getHttpUrl().toString());
+                    startuplogger.info("Connected to Dellemuse Server -> " + this.client.getHttpUrl().toString());
                     startuplogger.info(Constant.SEPARATOR);
                 }
             }

@@ -1,10 +1,13 @@
 package dellemuse.webapp.component.global;
 
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.pages.RedirectPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import dellemuse.webapp.website.page.DellemuseWebHomePage;
+import dellemuse.webapp.website.page.DellemuseWebSigninPage;
+import dellemuse.webapp.website.page.DellemuseWebSignupPage;
 import io.wktui.nav.menu.LinkMenuItem;
 import io.wktui.nav.menu.MenuItemPanel;
 import io.wktui.nav.menu.NavBar;
@@ -30,8 +33,8 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 		super.onInitialize();
 		
 		NavBar<Void> nav = new NavBar<Void>("navbarLeft");
-		
-		LabelLinkPanel logo = new LabelLinkPanel("item", new Model<String>("dellemuse")) {
+
+		LabelLinkPanel logo = new LabelLinkPanel("item", new Model<String>("DM")) {
             private static final long serialVersionUID = 1L;
             @Override
             protected void onClick() {
@@ -51,6 +54,31 @@ public class GlobalTopPanel<T> extends ModelPanel<T> {
 		//navRight.addCollapse(getAboutMenu());
 		//navRight.addCollapse(getContactMenu());
 		//add(navRight);
+		
+		
+		
+		Link<Void> sup = new Link<Void>("signup") {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public void onClick() {
+                    setResponsePage( new DellemuseWebSignupPage());
+                
+            }
+            
+        };
+        add(sup);
+        
+        
+        Link<Void> si = new Link<Void>("signin") {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public void onClick() {
+                   setResponsePage( new DellemuseWebSigninPage());
+            }
+        };
+        add(si);
+
+		
 	}
 	
 

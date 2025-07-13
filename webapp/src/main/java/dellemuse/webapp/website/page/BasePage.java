@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
@@ -251,7 +252,7 @@ public abstract class BasePage extends WebPage {
 		//response.render(JavaScriptHeaderItem.forUrl("popper.min.js"));
 		
 		 
-		response.render(JavaScriptHeaderItem.forReference(POPPER_JS));
+		//response.render(JavaScriptHeaderItem.forReference(POPPER_JS));
 		response.render(JavaScriptHeaderItem.forReference(KBEE_JS));
 		
 		response.render(JavaScriptHeaderItem.forReference(getApplication().getJavaScriptLibrarySettings().getJQueryReference()));
@@ -382,5 +383,10 @@ public abstract class BasePage extends WebPage {
 		response.render(CssHeaderItem.forReference(new WebjarsJavaScriptResourceReference(bootstrapPrefixPath + "/css/bootstrap.css")));
 		**/
 	
-	
+
+    
+    protected StringResourceModel getLabel(String key) {
+        return new StringResourceModel(key, this);
+    }
+    
 }

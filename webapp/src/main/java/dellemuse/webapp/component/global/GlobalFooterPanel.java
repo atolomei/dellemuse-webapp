@@ -1,9 +1,12 @@
 package dellemuse.webapp.component.global;
 
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.pages.RedirectPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import dellemuse.webapp.website.page.DellemuseWebSigninPage;
+import dellemuse.webapp.website.page.DellemuseWebSignupPage;
 import io.wktui.nav.menu.LinkMenuItem;
 import io.wktui.nav.menu.MenuItemPanel;
 import io.wktui.nav.menu.NavBar;
@@ -81,6 +84,13 @@ public class GlobalFooterPanel<T> extends ModelPanel<T> {
 		
 		
 		add(nav);
+		
+		
+		        
+
+		
+		
+		
 		
 	}	
 		

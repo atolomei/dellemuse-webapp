@@ -49,7 +49,8 @@ public class SiteArtWorksPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 	
-	static private Logger logger = Logger.getLogger(SiteArtWorksPage.class.getName());
+	@SuppressWarnings("unused")
+    static private Logger logger = Logger.getLogger(SiteArtWorksPage.class.getName());
 
 	private IModel<SiteModel> model;
 	private StringValue stringValue;
