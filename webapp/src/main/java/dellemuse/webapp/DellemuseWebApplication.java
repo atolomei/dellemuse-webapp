@@ -1,5 +1,11 @@
 package dellemuse.webapp;
 
+import java.util.Locale;
+
+import org.apache.wicket.Component;
+import org.apache.wicket.Session;
+import org.apache.wicket.application.IComponentInstantiationListener;
+import org.apache.wicket.markup.html.WebPage;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,6 +43,18 @@ public class DellemuseWebApplication {
 		initShutdownMessage();
 	}
 	
+	public static class SessionLocale implements IComponentInstantiationListener {
+	       @Override
+	       public void onInstantiation(Component component) {
+	           if (component instanceof WebPage) {
+	               Session session = Session.get();
+	               if (session.getLocale() == null) {
+	                   session.setLocale(Locale.forLanguageTag("es")); // Set Spanish locale
+	               }
+	           }
+	       }
+	   }
+	 
 	private void initShutdownMessage() {
 	    Runtime.getRuntime().addShutdownHook(new Thread() {
            public void run() {
@@ -48,6 +66,5 @@ public class DellemuseWebApplication {
            }
        });
 	}
-	
 
 }

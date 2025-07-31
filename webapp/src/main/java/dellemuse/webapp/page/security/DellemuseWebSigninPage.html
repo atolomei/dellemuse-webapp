@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+	<wicket:extend>
+
+		<section wicket:id="top-panel" />
+
+		<section class="container main">
+
+			<div style="float: left; width: 100%;" wicket:id="page-header"></div>
+	
+	
+			<div class="mt-4 mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div class="row">
+							<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+								<h2 class="mb-3">
+									<wicket:message key="signin" />
+								</h2>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+								<form wicket:id="signinForm">
+									<fieldset>
+										<div class="mb-3" wicket:id="email"></div>
+										<div class="mb-3" wicket:id="password"></div>
+										<div style="float:left; width:100%;" class="mb-3 mt-3 mr-0" wicket:id="submit"></div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- div class="mt-4 mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<a class="ps-2 pe-2" href="#">Ingresar con Google</a> <a
+							class="ps-2 pe-2" href="#">Ingresar con Apple</a>
+					</div>
+				</div>
+			</div -->
+
+			<div class="mt-2 mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-6 col-xl-6 col-lg-6 c col-md-12 col-sm-12">
+						<a href="/forgot"> <wicket:message key="forgot-password" /></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section style="float: left; width: 100%;" wicket:id="footer-panel" />
+
+	</wicket:extend>
+</body>
+</html>

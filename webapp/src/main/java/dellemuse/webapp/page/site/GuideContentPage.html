@@ -1,0 +1,79 @@
+
+
+<wicket:extend>
+
+	<section wicket:id="top-panel" />
+
+	<section class="container main">
+
+		<div style="float: left; width: 100%;" wicket:id="page-header"></div>
+
+		<div wicket:id="audioContainer" class="mt-5 mb-4" style="float: left; width: 100%; padding: 0;">
+			<div class="row">
+				<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+					<h3><wicket:message key="guide"/></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xxl-10 col-xl-10 col-lg-10  col-md-12 col-sm-12">
+						<audio wicket:id="audio" class="mt-4 mb-4" type="audio/mpeg" controls="controls" style="width:100%;">
+						</audio>
+					</div>
+			</div>
+		</div>
+
+
+		<div class="mt-4 mb-4" style="float: left; width: 100%; padding: 0;" wicket:id="imageContainer">
+			<div class="row">
+				<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+					<h3><wicket:message key="photo"/></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+					<a class="mb-3" wicket:id="image-link" href="#" target="_blank">
+						<img style="max-width: 100%; max-height: 100%; width: 100%; padding: 2px; border:1px solid #dddddd;" wicket:id="image" />
+					 </a>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-4 mb-4" style="float: left; width: 100%; padding: 0;">
+			<div class="row">
+				<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+					<h3><wicket:message key="info"/></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<span wicket:id="infoGral" class="text"> </span>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="mt-4 mb-4" style="float: left; width: 100%; padding: 0;">
+			<div class="row">
+				<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+					<h3><wicket:message key="description"/></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xxl-10 col-xl-10 col-lg-10 col-md-12 col-sm-12">
+					<div class="text" wicket:id="info"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section style="width: 100%; float: left;">
+		<div class="container-fluid">
+			<div class="container mt-4 mb-4">
+				<div wicket:id="navigator" />
+			</div>
+		</div>
+	</section>
+
+	<section style="width: 100%; float: left;" wicket:id="footer-panel" />
+
+</wicket:extend>

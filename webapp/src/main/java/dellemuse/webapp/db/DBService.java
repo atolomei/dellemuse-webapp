@@ -27,33 +27,18 @@ public class DBService extends BaseService {
     @JsonIgnore
     private DelleMuseClient client;
 
+    @JsonIgnore
+    private TimerThread timerConnect;
+
     public DBService(Settings settings) {
         this.settings = settings;
     }
 
-    @JsonIgnore
-    private TimerThread timerConnect;
 
-    private synchronized void connect() {
-
-        this.client = new DelleMuseClient(getSettings().getDellemuseServerEndpoint(), getSettings().getDellemuseServerPort(),
-                getSettings().getDellemuseServerAccessKey(), getSettings().getDellemuseServerSecretKey());
-
-        try {
-            if (!client.ping().equals("ok")) {
-                throw new RuntimeException(client.ping());
-            } else {
-                if (this.client.getHttpUrl() != null) {
-                    startuplogger.info(Constant.SEPARATOR);
-                    startuplogger.info("Connected to Dellemuse Server -> " + this.client.getHttpUrl().toString());
-                    startuplogger.info(Constant.SEPARATOR);
-                }
-            }
-        } catch (DelleMuseClientException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    /**
+     * 
+     * 
+     */
     @PostConstruct
     public void onInit() {
 
@@ -65,7 +50,8 @@ public class DBService extends BaseService {
         connect();
 
         try {
-            startuplogger.info("Institutions:");
+         
+        	startuplogger.info("Institutions:");
 
             this.client.getInstitutionClientHandler().findAll().forEach(item -> startuplogger.info(item.getDisplayname()));
 
@@ -132,4 +118,30 @@ public class DBService extends BaseService {
     public Settings getSettings() {
         return settings;
     }
+
+    /**
+     * 
+     * 
+     */
+    private synchronized void connect() {
+
+        this.client = new DelleMuseClient(getSettings().getDellemuseServerEndpoint(), getSettings().getDellemuseServerPort(),
+                getSettings().getDellemuseServerAccessKey(), getSettings().getDellemuseServerSecretKey());
+
+        try {
+            if (!client.ping().equals("ok")) {
+                throw new RuntimeException(client.ping());
+            } else {
+                if (this.client.getHttpUrl() != null) {
+                    startuplogger.info(Constant.SEPARATOR);
+                    startuplogger.info("Connected to Dellemuse Server -> " + this.client.getHttpUrl().toString());
+                    startuplogger.info(Constant.SEPARATOR);
+                }
+            }
+        } catch (DelleMuseClientException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    
 }

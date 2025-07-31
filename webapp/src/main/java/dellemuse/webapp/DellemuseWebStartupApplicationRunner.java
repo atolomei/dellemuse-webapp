@@ -40,7 +40,12 @@ public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 			args.getNonOptionArgs().forEach( item -> startupLogger.debug(item));
 		}
 
-		Locale.setDefault(Locale.ENGLISH);
+		Locale.setDefault(Locale.forLanguageTag("es"));
+		
+		
+		
+		
+		
 		
 		startupLogger.info(SEPARATOR);
 		
