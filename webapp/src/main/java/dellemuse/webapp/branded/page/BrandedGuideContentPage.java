@@ -1,10 +1,11 @@
-package dellemuse.webapp.page.site;
+package dellemuse.webapp.branded.page;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.maven.model.Site;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
@@ -13,12 +14,16 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.Url;
+import org.apache.wicket.request.component.IRequestablePage;
+import org.apache.wicket.request.cycle.RequestCycle;
+import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.UrlResourceReference;
 import org.apache.wicket.util.string.StringValue;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import com.giffing.wicket.spring.boot.context.scan.WicketHomePage;
+ 
 
 import dellemuse.client.error.DelleMuseClientException;
 import dellemuse.model.ArtExhibitionGuideModel;
@@ -31,8 +36,10 @@ import dellemuse.model.SiteModel;
 import dellemuse.model.logging.Logger;
 import dellemuse.model.ref.RefPersonModel;
 import dellemuse.model.ref.RefResourceModel;
+import dellemuse.model.util.Check;
 import dellemuse.model.util.ThumbnailSize;
 import dellemuse.webapp.ServiceLocator;
+import dellemuse.webapp.branded.global.BrandedGlobalFooterPanel;
 import dellemuse.webapp.branded.global.BrandedGlobalTopPanel;
 import dellemuse.webapp.db.DBService;
 import dellemuse.webapp.global.GlobalFooterPanel;
@@ -40,12 +47,12 @@ import dellemuse.webapp.global.GlobalTopPanel;
 import dellemuse.webapp.global.PageHeaderPanel;
 import dellemuse.webapp.guide.GuideContentListItemPanel;
 import dellemuse.webapp.page.BasePage;
+import dellemuse.webapp.page.site.ArtWorkImagePage;
 import io.wktui.model.TextCleaner;
 import io.wktui.nav.breadcrumb.BCElement;
 import io.wktui.nav.breadcrumb.BreadCrumb;
 import io.wktui.nav.breadcrumb.HREFBCElement;
 import io.wktui.nav.listNavigator.ListNavigator;
-import io.wktui.struct.list.ListPanel;
 import io.wktui.text.ExpandableReadPanel;
 import wktui.base.InvisiblePanel;
 
@@ -53,35 +60,37 @@ import wktui.base.InvisiblePanel;
  * site foto Info - exhibitions
  */
 
-@MountPath("/content/${id}")
-public class GuideContentPage extends BaseSitePage {
+@MountPath("/dem/content/${id}")
+public class BrandedGuideContentPage extends BrandedBaseSitePage {
 
 	private static final long serialVersionUID = 1L;
 
-	static private Logger logger = Logger.getLogger(GuideContentPage.class.getName());
+	static private Logger logger = Logger.getLogger(BrandedGuideContentPage.class.getName());
 
 	private IModel<GuideContentModel> model;
 	private IModel<ArtExhibitionGuideModel> artExhibitionGuideModel;
 	private IModel<ArtWorkModel> artWorkModel;
+
 	private List<IModel<GuideContentModel>> list;
 
 	private Link<GuideContentModel> imageLink;
 	private Image image;
 	private WebMarkupContainer imageContainer;
+
+	private WebMarkupContainer navigatorContainer;
 	private int current = 0;
 
 	private StringValue stringValue;
-
-	public GuideContentPage(PageParameters parameters) {
+	
+	public BrandedGuideContentPage(PageParameters parameters) {
 		super(parameters);
 		stringValue = getPageParameters().get("id");
 	}
 
 	/**
-	 * 
 	 * @param model
 	 */
-	public GuideContentPage(IModel<GuideContentModel> model, List<IModel<GuideContentModel>> list) {
+	public BrandedGuideContentPage(IModel<GuideContentModel> model, List<IModel<GuideContentModel>> list) {
 		super();
 		this.model = model;
 		setList(list);
@@ -98,7 +107,7 @@ public class GuideContentPage extends BaseSitePage {
 		super.getPageParameters().set("id", getModel().getObject().getId());
 	}
 
-	public GuideContentPage(IModel<GuideContentModel> model, List<IModel<GuideContentModel>> list,
+	public BrandedGuideContentPage(IModel<GuideContentModel> model, List<IModel<GuideContentModel>> list,
 			IModel<ArtExhibitionGuideModel> artExhibitionGuideModel) {
 		super();
 		this.model = model;
@@ -119,24 +128,33 @@ public class GuideContentPage extends BaseSitePage {
 		super.getPageParameters().set("id", getModel().getObject().getId());
 	}
 
+	public void setList(List<IModel<GuideContentModel>> list) {
+		this.list = list;
+	}
+
+	public List<IModel<GuideContentModel>> getList() {
+		return list;
+	}
+
 	@Override
 	public void onInitialize() {
 		super.onInitialize();
 
-		if (this.stringValue != null) {
-			GuideContentModel siteModel = getGuideContent(this.stringValue);
-			setModel(new Model<>(siteModel));
+		if ( (getModel()==null) && (this.stringValue!=null) && (!this.stringValue.isEmpty())) {
+			GuideContentModel guideModel = getGuideContent(this.stringValue);			
+			setModel(new Model<GuideContentModel>(guideModel));
 		}
 
 		setSiteModel(new Model<SiteModel>(getSite()));
 		
+		add(new BrandedGlobalTopPanel("top-panel", getSiteModel()));
+		add(new BrandedGlobalFooterPanel<>("footer-panel"));
 		
 		BreadCrumb<Void> bc = createBreadCrumb();
-		
-		bc.addElement(new HREFBCElement("/site/" + getSiteModel().getObject().getId().toString(),
-				new Model<String>(getSiteModel().getObject().getDisplayname())));
+	 
+	    bc.addElement(getSiteHomeElement());
 
-		bc.addElement(new HREFBCElement("/guide/" + getArtExhibitionGuideModel().getObject().getId().toString(),
+	    bc.addElement(new HREFBCElement(breadCrumbPrefix()+"/guide/" + getArtExhibitionGuideModel().getObject().getId().toString(),
 				new Model<String>(getArtExhibitionGuideModel().getObject().getDisplayname())));
 
 		bc.addElement(new BCElement(new Model<String>(getModel().getObject().getDisplayname())));
@@ -154,7 +172,7 @@ public class GuideContentPage extends BaseSitePage {
 			ph.setTagline(new Model<String>(info.toString()));
 		}
 
-		
+
 		if (isInfoGral()) {
 			Label infoGral = new Label("infoGral", getInfoGral());
 			infoGral.setEscapeModelStrings(false);
@@ -162,21 +180,25 @@ public class GuideContentPage extends BaseSitePage {
 		} else {
 			addOrReplace(new InvisiblePanel("infoGral"));
 		}
+		
+		 
 
 		ph.setBreadCrumb(bc);
 		addOrReplace(ph);
 
-		add(new GlobalTopPanel("top-panel", getSiteModel()));
-		add(new GlobalFooterPanel<GuideContentModel>("footer-panel", getModel()));
-
-		if (getArtWorkModel() != null) {
+			if (getArtWorkModel() != null) {
 			ExpandableReadPanel infoPanel = new ExpandableReadPanel("info",
 					new Model<String>(getArtWorkModel().getObject().getInfo()));
 			addOrReplace(infoPanel);
 		} else {
 			addOrReplace(new InvisiblePanel("info"));
 		}
-
+			
+		this.navigatorContainer = new WebMarkupContainer("navigatorContainer");
+		add(this.navigatorContainer);
+		
+		this.navigatorContainer.setVisible(getList()!=null && getList().size()>0);
+		
 		if (getList() != null) {
 			ListNavigator<GuideContentModel> list = new ListNavigator<GuideContentModel>("navigator", this.current,
 					getList()) {
@@ -189,12 +211,13 @@ public class GuideContentPage extends BaseSitePage {
 
 				@Override
 				protected void navigate(int current) {
-					setResponsePage(new GuideContentPage(getList().get(current), getList()));
+					IModel<GuideContentModel> model = new Model<GuideContentModel>(getGuideContent(getList().get(current).getObject().getId()));
+					setResponsePage(new BrandedGuideContentPage(model, getList()));
 				}
 			};
-			add(list);
+			this.navigatorContainer.add(list);
 		} else {
-			add(new InvisiblePanel("navigator"));
+			navigatorContainer.add(new InvisiblePanel("navigator"));
 		}
 
 		this.imageContainer = new WebMarkupContainer("imageContainer");
@@ -206,20 +229,20 @@ public class GuideContentPage extends BaseSitePage {
 
 			@Override
 			public void onClick() {
-				GuideContentPage.this.onImageClick(getModel());
+				BrandedGuideContentPage.this.onImageClick(getModel());
 			}
 		};
-		this.imageContainer.add(this.imageLink);
+		this.imageContainer.add(imageLink);
 
 		if (getImageSrc(getModel()) != null) {
 			Url url = Url.parse(getImageSrc(getModel()));
 			UrlResourceReference resourceReference = new UrlResourceReference(url);
 			this.image = new Image("image", resourceReference);
-			this.imageLink.addOrReplace(this.image);
+			this.imageLink.addOrReplace(image);
 		} else {
 			this.image = new Image("image", new UrlResourceReference(Url.parse("")));
-			this.image.setVisible(false);
-			this.imageLink.addOrReplace(image);
+			image.setVisible(false);
+			imageLink.addOrReplace(image);
 		}
 
 		WebMarkupContainer audioContainer = new WebMarkupContainer("audioContainer");
@@ -237,22 +260,6 @@ public class GuideContentPage extends BaseSitePage {
 		} else {
 			audioContainer.addOrReplace(new InvisiblePanel("intro-audio"));
 		}
-
-	}
-
-
-
-	public void setList(List<IModel<GuideContentModel>> list) {
-		this.list = list;
-	}
-
-	public List<IModel<GuideContentModel>> getList() {
-		return list;
-	}
-
-
-	public IModel<GuideContentModel> getModel() {
-		return model;
 	}
 
 	/**
@@ -266,32 +273,25 @@ public class GuideContentPage extends BaseSitePage {
 	public void onDetach() {
 		super.onDetach();
 
-		if (model != null)
-			model.detach();
+		if (this.model != null)
+			this.model.detach();
 
-		if (artExhibitionGuideModel != null)
-			artExhibitionGuideModel.detach();
+		if (this.artExhibitionGuideModel != null)
+			this.artExhibitionGuideModel.detach();
 
-		if (artWorkModel != null)
-			artWorkModel.detach();
+		if (this.artWorkModel != null)
+			this.artWorkModel.detach();
 
-		if (list != null)
-			list.forEach(t -> t.detach());
+		if (this.list != null)
+			this.list.forEach(t -> t.detach());
 	}
+	
 
-	private boolean isInfoGral() {
-		return getArtWorkModel()!=null &&
-				getArtWorkModel().getObject()!=null && 
-				getArtWorkModel().getObject().getId()!=null ||
-				getArtWorkModel().getObject().getSpec()!=null;
-	}
-
-	private String getInfoGral() {
-		return  TextCleaner.clean(getArtWorkModel().getObject().getSpec()+" <br/>" + " id: " + getArtWorkModel().getObject().getId().toString());
+	public IModel<GuideContentModel> getModel() {
+		return model;
 	}
 
 	/**
-	 * 
 	 * 
 	 * @param stringValue
 	 * @return
@@ -308,8 +308,21 @@ public class GuideContentPage extends BaseSitePage {
 
 	/**
 	 * 
-	 * 
+	 * @param stringValue
 	 * @return
+	 */
+	protected GuideContentModel getGuideContent(Long id) {
+		try {
+			DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
+			return db.getClient().getGuideContentClientHandler().get(id);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	
+	/**
+ 	 * @return
 	 */
 	protected IModel<ArtExhibitionGuideModel> getArtExhibitionGuideModel() {
 
@@ -327,34 +340,14 @@ public class GuideContentPage extends BaseSitePage {
 
 	/**
 	 * 
-	 * 
-	 * 
 	 * @return
 	 */
-	protected SiteModel getSite() {
-		try {
-			DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
-
-			ArtExhibitionGuideModel guide = getArtExhibitionGuideModel().getObject();
-			ArtExhibitionModel ae = db.getClient().getArtExhibition(guide.getRefArtExhibition().getId());
-
-			SiteModel site = db.getClient().getSite(ae.getRefSite().getId());
-
-			return site;
-
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 	protected IModel<ArtWorkModel> getArtWorkModel() {
 
 		if (this.artWorkModel == null) {
 			try {
-				DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
-				ArtExhibitionItemModel ae = db.getClient()
-						.getArtExhibitionItem(getModel().getObject().getArtExhibitionItem().getId());
-				this.artWorkModel = new Model<ArtWorkModel>(db.getClient().getArtWork(ae.getRefArtWork().getId()));
+				this.artWorkModel = new Model<ArtWorkModel>(getArtWork(getModel().getObject()));
+				
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
@@ -362,25 +355,28 @@ public class GuideContentPage extends BaseSitePage {
 		return this.artWorkModel;
 	}
 
-	protected void onImageClick(IModel<GuideContentModel> guideModel) {
-		setResponsePage(new ArtWorkImagePage(
-				new Model<>(getArtWork(guideModel.getObject())), 
-						getPageUrl()));
+	@Override
+	protected Long getSiteId() {
+		Check.requireTrue(getModel()!=null && getModel().getObject()!=null, "can not call getSiteId() before setting the Model");
+		ArtExhibitionItemModel item = getArtExhibitionItem(getModel().getObject());
+		ArtExhibitionModel ae = getArtExhibition(item.getRefArtExhibition().getId());
+		return ae.getRefSite().getId();
 	}
 
 	
+	protected void onImageClick(IModel<GuideContentModel> guideModel) {
+		setResponsePage( getArtWorkImagePage(guideModel, getPageUrl()));
+	}
+
 	protected String getPageUrl() {
-		return "/content/${id}".replace("${id}", getModel().getObject().getId().toString());
+		return getServerUrl() + "/dem/content/${id}".replace("${id}", getModel().getObject().getId().toString());
     }
-	
 	private String getImageSrc(IModel<GuideContentModel> model) {
-		DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
 		try {
 			if (getArtWorkModel().getObject().getRefPhotoModel() == null)
 				return null;
-			return db.getClient().getPresignedThumbnailUrl(getArtWorkModel().getObject().getRefPhotoModel().getId(),
-					ThumbnailSize.MEDIUM);
-		} catch (DelleMuseClientException e) {
+			return getImageSrc(getArtWorkModel().getObject().getRefPhotoModel());
+		} catch (Exception e) {
 			logger.error(e);
 			return null;
 		}
@@ -388,6 +384,18 @@ public class GuideContentPage extends BaseSitePage {
 
 	private boolean isAudio() {
 		return getModel().getObject().getRefAudioModel() != null;
+	}
+
+
+	private boolean isInfoGral() {
+		return getArtWorkModel()!=null &&
+				getArtWorkModel().getObject()!=null && 
+				getArtWorkModel().getObject().getId()!=null ||
+				getArtWorkModel().getObject().getSpec()!=null;
+	}
+
+	private String getInfoGral() {
+		return  TextCleaner.clean(getArtWorkModel().getObject().getSpec()+" <br/>" + " Código: " + getArtWorkModel().getObject().getId().toString());
 	}
 
 }

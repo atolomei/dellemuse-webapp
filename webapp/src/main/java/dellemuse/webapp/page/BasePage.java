@@ -1,7 +1,6 @@
 package dellemuse.webapp.page;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -26,7 +25,6 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.string.StringValue;
 
-import dellemuse.client.error.DelleMuseClientException;
 import dellemuse.model.ArtExhibitionGuideModel;
 import dellemuse.model.ArtExhibitionItemModel;
 import dellemuse.model.ArtExhibitionModel;
@@ -41,12 +39,10 @@ import dellemuse.model.util.ThumbnailSize;
 import dellemuse.webapp.ServiceLocator;
 import dellemuse.webapp.db.DBModelService;
 import dellemuse.webapp.db.DBService;
-import dellemuse.webapp.icons.FontAwesome;
 import dellemuse.webapp.page.site.ArtExhibitionGuidePage;
 import dellemuse.webapp.page.site.ArtWorkImagePage;
 import dellemuse.webapp.page.site.GuideContentPage;
 import io.wktui.nav.breadcrumb.BreadCrumb;
-import io.wktui.nav.breadcrumb.BreadcrumbBasePanel;
 import io.wktui.nav.breadcrumb.HREFBCElement;
 import wktui.bootstrap.Bootstrap;
 
@@ -442,11 +438,6 @@ public abstract class BasePage extends WebPage {
 	protected String getPresignedUrl(RefResourceModel photoModel) {
 		try {
 			DBModelService db = (DBModelService) ServiceLocator.getInstance().getBean(DBModelService.class);
-
-			// DBService db = (DBService)
-			// ServiceLocator.getInstance().getBean(DBService.class);
-			// Long id = Long.valueOf(photoModel.getId());
-
 			String url = db.getPresignedUrl(photoModel);
 			mark("url - " + photoModel.getDisplayname());
 			return url;
@@ -590,12 +581,38 @@ public abstract class BasePage extends WebPage {
 		try {
 			DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
 			ArtWorkModel item = db.getClient().getArtWork(id);
+			
+			if (item!=null)
+				mark(item);
+			
 			mark(item);
 			return item;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * @return
+	 */
+	protected ArtWorkModel getArtWork(Long id) {
+
+		if (id == null)
+			return null;
+
+		try {
+			DBService db = (DBService) ServiceLocator.getInstance().getBean(DBService.class);
+			ArtWorkModel item = db.getClient().getArtWork(id);
+			
+			if (item!=null)
+				mark(item);
+			
+			return item;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 
 	/**
 	 * @return

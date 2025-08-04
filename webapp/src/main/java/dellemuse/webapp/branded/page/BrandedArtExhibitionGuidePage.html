@@ -1,0 +1,91 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+</head>
+
+<body>
+	<wicket:extend>
+
+		<section wicket:id="top-panel" />
+
+		<section class="container main">
+
+			<div style="float: left; width: 100%;" wicket:id="page-header"></div>
+
+			<div class="mb-5 mt-5" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h3>
+							<wicket:message key="intro" />
+						</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<div class="pb-3 text" wicket:id="intro"></div>
+					</div>
+				</div>
+
+				<div wicket:id="audioContainer" class="row">
+					<div class="col-xxl-10 col-xl-10 col-lg-10 col-md-12 col-sm-12">
+						<div wicket:id="intro-audio" class="row">
+							<audio wicket:id="audioIntro" controls="controls" class="mt-4 mb-4">
+							</audio>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div wicket:id="descriptionContainer" class="mb-5" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h3>
+							<wicket:message key="description" />
+						</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div class="text" wicket:id="description"></div>
+					</div>
+				</div>
+			</div>
+
+			<div wicket:id="moreinfoContainer" class="mb-5" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h3>
+							<wicket:message key="moreinfo" />
+						</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<a wicket:id="moreinfoLink"><span class="text" wicket:id="moreinfo"></span></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="mb-5" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<h3>
+							<wicket:message key="contents" />
+						</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div wicket:id="contents"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section style="width: 100%; float: left;" wicket:id="footer-panel" />
+
+	</wicket:extend>
+</body>
+</html>
+
+
+

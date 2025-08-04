@@ -1,0 +1,46 @@
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+
+		<section wicket:id="top-panel" />
+
+		<section class="container main">
+
+			<div style="float: left; width: 100%;" wicket:id="page-header"></div>
+
+			<div wicket:id="error" class="mt-4 mb-4" />
+
+			<div wicket:id="formContainer" class="mt-4 mb-4" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<form wicket:id="findForm">
+							<fieldset>
+								<div class="mb-3" wicket:id="text"></div>
+
+								<div style="float: left; width: 100%;" class="mb-2 mt-2 mr-0">
+									<div style="float: left;" prin wicket:id="submit"></div>
+									<!-- a href="#" style="float: right;"> Reinicializar </a -->
+								</div>
+
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div wicket:id="container">
+				<div wicket:id="results" class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12  col-md-12 col-sm-12"></div>
+				</div>
+			</div>
+		</section>
+
+		<section style="width: 100%; float: left;" wicket:id="footer-panel" />
+
+	</wicket:extend>
+</body>
+</html>
+
+
+

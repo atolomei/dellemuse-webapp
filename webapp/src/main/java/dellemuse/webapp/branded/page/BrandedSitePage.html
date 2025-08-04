@@ -1,0 +1,56 @@
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+
+	<wicket:extend>
+
+		<section wicket:id="top-panel" />
+
+		<section class="container main">
+
+			<div style="float: left; width: 100%;" class="mb-4" wicket:id="page-header"></div>
+
+			<div class="mb-5" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>
+							<wicket:message key="exhibitions" />
+						</h3>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div style="float: left; width: 100%;" wicket:id="exhibitionsTemporary"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mb-5" style="float: left; width: 100%; padding: 0;">
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<h3>
+							<wicket:message key="permanent-collection" />
+						</h3>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xxl-12 col-xl-12 col-lg-12 c col-md-12 col-sm-12">
+						<div style="float: left; width: 100%;" wicket:id="exhibitionsPermanent"></div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+		
+		<section style="width: 100%; float: left;" wicket:id="footer-panel" />
+
+
+	</wicket:extend>
+</body>
+
+</html>
+
+
+

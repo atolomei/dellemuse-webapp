@@ -28,10 +28,10 @@ import dellemuse.model.ArtExhibitionModel;
 import dellemuse.model.ArtWorkModel;
 import dellemuse.model.GuideContentModel;
 import dellemuse.model.PersonModel;
-import dellemuse.model.PersonModelRef;
 import dellemuse.model.ResourceModel;
 import dellemuse.model.SiteModel;
 import dellemuse.model.logging.Logger;
+import dellemuse.model.ref.RefPersonModel;
 import dellemuse.model.ref.RefResourceModel;
 import dellemuse.model.util.ThumbnailSize;
 import dellemuse.webapp.ServiceLocator;
@@ -214,7 +214,7 @@ public class ArtExhibitionGuidePage extends BaseSitePage {
                         if (aw!=null) {
                             StringBuilder info = new StringBuilder();
                             int n=0;
-                            for (PersonModelRef p:aw.getArtists()) {
+                            for (RefPersonModel p:aw.getRefArtists()) {
                                 if (n++>0)
                                     info.append(", ");
                                 info.append(p.getDisplayname());
