@@ -25,10 +25,8 @@ import dellemuse.webapp.global.GlobalFooterPanel;
 import dellemuse.webapp.global.GlobalTopPanel;
 import dellemuse.webapp.global.PageHeaderPanel;
 import dellemuse.webapp.guide.GuideContentListItemPanel;
-import dellemuse.webapp.page.BasePage;
 import io.wktui.model.TextCleaner;
 import io.wktui.nav.breadcrumb.BreadCrumb;
-import io.wktui.nav.breadcrumb.HREFBCElement;
 import io.wktui.struct.list.ListPanel;
 
 /**
@@ -90,7 +88,6 @@ public class SitePage extends BaseSitePage {
         add(opens);
 
         ListPanel<ArtExhibitionModel> panel = new ListPanel<>("exhibitionsPermanent", getArtExhibitionsPermanent()) {
-        	
             private static final long serialVersionUID = 1L;
       
             protected List<IModel<ArtExhibitionModel>> filter(List<IModel<ArtExhibitionModel>> initialList, String filter) {
@@ -105,7 +102,6 @@ public class SitePage extends BaseSitePage {
                );
                return list; 
             }
-            
             @Override
             protected Panel getListItemPanel(IModel<ArtExhibitionModel> model) {
                 GuideContentListItemPanel<ArtExhibitionModel> panel = new GuideContentListItemPanel<>("row-element", model) {
@@ -147,11 +143,9 @@ public class SitePage extends BaseSitePage {
                     
                     @Override
                     public void onClick() {
-                        //setResponsePage(new ArtExhibitionPage(model));
                         List<ArtExhibitionGuideModel> list = getArtExhibitionGuides(model);
                         if (list.size()>0)
                             setResponsePage(getArtExhibitionGuidePage(new Model<ArtExhibitionGuideModel>(list.get(0))));
-                        
                     }
 
                     protected IModel<String> getInfo(IModel<ArtExhibitionModel> model) {

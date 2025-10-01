@@ -92,10 +92,8 @@ public class ArtExhibitionPage extends BaseSitePage {
 		}
 	
 		
-        BreadCrumb<Void> bc = createBreadCrumb();;
-		// bc.addElement(new HREFBCElement("/home", new Model<String>("home")));
-	    // bc.addElement(new HREFBCElement("/sites", new Model<String>("Instituciones")));
-		
+        BreadCrumb<Void> bc = createBreadCrumb();
+	 	
 		bc.addElement(new HREFBCElement("/site/"+getModel().getObject().getRefSite().getId().toString(), 
 		        new Model<String>(getModel().getObject().getRefSite().getDisplayname())));
 		
@@ -106,9 +104,6 @@ public class ArtExhibitionPage extends BaseSitePage {
 		
 		
 		add(ph);
-		
-		//add(new Label("site", new Model<String>(getModel().getObject().toString())));
-		
 		
 		List<ArtExhibitionGuideModel> sites = getArtExhibitionGuides();
         List<IModel<ArtExhibitionGuideModel>> list = new ArrayList<IModel<ArtExhibitionGuideModel>>();

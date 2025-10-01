@@ -12,7 +12,7 @@ import dellemuse.model.ref.RefResourceModel;
 import dellemuse.model.util.ThumbnailSize;
 import dellemuse.webapp.BaseService;
 import dellemuse.webapp.ServiceLocator;
-import dellemuse.webapp.Settings;
+import dellemuse.webapp.WebAppSettings;
 
 import jakarta.annotation.PostConstruct;
 
@@ -25,13 +25,13 @@ public class DBModelService extends BaseService {
     static private Logger startuplogger = Logger.getLogger("StartupLogger");
 
     @JsonIgnore
-    private final Settings settings;
+    private final WebAppSettings settings;
 
     @JsonIgnore
     final DBService dbService;
     
     
-    public DBModelService(Settings settings,  DBService dbService) {
+    public DBModelService(WebAppSettings settings,  DBService dbService) {
         this.settings = settings;
         this.dbService=dbService;
     }
@@ -41,7 +41,7 @@ public class DBModelService extends BaseService {
         startuplogger.debug("Started -> " + this.getClass().getSimpleName());
 
     }
-    public Settings getSettings() {
+    public WebAppSettings getSettings() {
         return settings;
     }
     

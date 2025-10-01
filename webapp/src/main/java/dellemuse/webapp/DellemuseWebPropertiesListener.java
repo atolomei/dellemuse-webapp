@@ -1,6 +1,6 @@
 /*
  * Odilon Object Storage
- * (C) Novamens 
+ * (c) kbee 
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,8 +59,6 @@ public class DellemuseWebPropertiesListener implements ApplicationListener<Appli
 		    //props.put("spring.servlet.multipart.file-size-threshold", "24KB");
 		    
 		    environment.getPropertySources().addFirst(new PropertiesPropertySource("dellemuseProps", props));
-		    
-		    
 	}
 	 
 }

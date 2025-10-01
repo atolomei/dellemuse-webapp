@@ -98,7 +98,8 @@ public class GuideContentPage extends BaseSitePage {
 		super.getPageParameters().set("id", getModel().getObject().getId());
 	}
 
-	public GuideContentPage(IModel<GuideContentModel> model, List<IModel<GuideContentModel>> list,
+	public  GuideContentPage(IModel<GuideContentModel> model, 
+			List<IModel<GuideContentModel>> list,
 			IModel<ArtExhibitionGuideModel> artExhibitionGuideModel) {
 		super();
 		this.model = model;

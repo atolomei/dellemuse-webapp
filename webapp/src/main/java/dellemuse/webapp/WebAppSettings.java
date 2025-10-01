@@ -12,10 +12,10 @@ import jakarta.annotation.PostConstruct;
 
 @Configuration
 // @PropertySource("classpath:application.properties")
-public class Settings extends BaseService implements SystemService {
+public class WebAppSettings extends BaseService implements SystemService {
 
     @SuppressWarnings("unused")
-    static private Logger logger = Logger.getLogger(Settings.class.getName());
+    static private Logger logger = Logger.getLogger(WebAppSettings.class.getName());
 
     @SuppressWarnings("unused")
     static private Logger startuplogger = Logger.getLogger("StartupLogger");
@@ -66,11 +66,7 @@ public class Settings extends BaseService implements SystemService {
 
     @Value("${scanFreqmillisecs:10000}")
     private int scanFreqMillisecs;
-
-    public int getScanFreqMillisecs() {
-        return this.scanFreqMillisecs;
-    }
-
+    
     @Value("${templates:null}")
     private String templatesDir;
 
@@ -86,7 +82,7 @@ public class Settings extends BaseService implements SystemService {
     // SERVER ------------------------
 
     @Autowired
-    public Settings() {
+    public WebAppSettings() {
     }
 
     @PostConstruct
@@ -116,6 +112,11 @@ public class Settings extends BaseService implements SystemService {
     public String getTemplatesDir() {
         return templatesDir;
     }
+
+    public int getScanFreqMillisecs() {
+        return this.scanFreqMillisecs;
+    }
+
 
     public void setTemplatesDir(String templatesDir) {
         this.templatesDir = templatesDir;
@@ -226,7 +227,7 @@ public class Settings extends BaseService implements SystemService {
     }
 
     public String getAppName() {
-        return "Web Application for Service Management";
+        return "Web Application";
     }
 
 }

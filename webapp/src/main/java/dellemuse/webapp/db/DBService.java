@@ -10,7 +10,7 @@ import dellemuse.model.logging.Logger;
 import dellemuse.model.util.Constant;
 import dellemuse.model.util.TimerThread;
 import dellemuse.webapp.BaseService;
-import dellemuse.webapp.Settings;
+import dellemuse.webapp.WebAppSettings;
 import jakarta.annotation.PostConstruct;
 
 @Service
@@ -22,7 +22,7 @@ public class DBService extends BaseService {
     static private Logger startuplogger = Logger.getLogger("StartupLogger");
 
     @JsonIgnore
-    private final Settings settings;
+    private final WebAppSettings settings;
 
     @JsonIgnore
     private DelleMuseClient client;
@@ -30,7 +30,7 @@ public class DBService extends BaseService {
     @JsonIgnore
     private TimerThread timerConnect;
 
-    public DBService(Settings settings) {
+    public DBService(WebAppSettings settings) {
         this.settings = settings;
     }
 
@@ -115,7 +115,7 @@ public class DBService extends BaseService {
         this.client = client;
     }
 
-    public Settings getSettings() {
+    public WebAppSettings getSettings() {
         return settings;
     }
 

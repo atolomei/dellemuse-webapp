@@ -48,7 +48,7 @@ public abstract class BaseSitePage extends BasePage {
     private StringValue siteStringValue;
     
     public BaseSitePage() {
-    	super();
+    	super(); 
     }
     
     public BaseSitePage(PageParameters parameters) {
@@ -61,8 +61,7 @@ public abstract class BaseSitePage extends BasePage {
      */
     public BaseSitePage(IModel<SiteModel> model) {
         super();
-        this.siteModel = model;
-        siteStringValue = null;
+        this.siteModel = model;       siteStringValue = null;
         super.getPageParameters().set("siteid", getSiteModel().getObject().getId());
     }
     

@@ -44,17 +44,17 @@ public class DellemuseWebApplication {
 	}
 	
 	public static class SessionLocale implements IComponentInstantiationListener {
-	       @Override
-	       public void onInstantiation(Component component) {
-	           if (component instanceof WebPage) {
-	               Session session = Session.get();
-	               if (session.getLocale() == null) {
-	                   session.setLocale(Locale.forLanguageTag("es")); // Set Spanish locale
-	               }
-	           }
-	       }
-	   }
-	 
+		@Override
+		public void onInstantiation(Component component) {
+			if (component instanceof WebPage) {
+				Session session = Session.get();
+				if (session.getLocale() == null) {
+					session.setLocale(Locale.forLanguageTag("es")); // Set Spanish locale
+				}
+			}
+		}
+	}
+
 	private void initShutdownMessage() {
 	    Runtime.getRuntime().addShutdownHook(new Thread() {
            public void run() {

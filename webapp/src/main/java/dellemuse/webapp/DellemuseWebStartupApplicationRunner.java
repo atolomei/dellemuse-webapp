@@ -41,15 +41,10 @@ public class DellemuseWebStartupApplicationRunner implements ApplicationRunner {
 		}
 
 		Locale.setDefault(Locale.forLanguageTag("es"));
-		
-		
-		
-		
-		
-		
+	
 		startupLogger.info(SEPARATOR);
 		
-		Settings settings=appContext.getBean(Settings.class);
+		WebAppSettings settings=appContext.getBean(WebAppSettings.class);
 		
 		startupLogger.info    ("App name -> " + settings.getAppName());
 		startupLogger.info    ("Endpoint -> " + settings.getEndpoint());

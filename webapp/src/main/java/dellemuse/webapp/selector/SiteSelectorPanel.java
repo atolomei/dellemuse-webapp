@@ -15,7 +15,7 @@ import dellemuse.model.SiteModel;
 import dellemuse.model.ref.RefResourceModel;
 import dellemuse.model.util.ThumbnailSize;
 import dellemuse.webapp.ServiceLocator;
-import dellemuse.webapp.Settings;
+import dellemuse.webapp.WebAppSettings;
 import dellemuse.webapp.db.DBService;
 import dellemuse.webapp.guide.GuideContentListItemPanel;
 import dellemuse.webapp.page.site.SitePage;
@@ -32,7 +32,7 @@ public class SiteSelectorPanel extends ModelPanel<Void> {
 
 	public SiteSelectorPanel(String id) {
 		super(id, null);
-		this.isServerSimulated = ServiceLocator.getInstance().getApplicationContext().getBean(Settings.class)
+		this.isServerSimulated = ServiceLocator.getInstance().getApplicationContext().getBean(WebAppSettings.class)
 				.isSimulateServer();
 	}
 

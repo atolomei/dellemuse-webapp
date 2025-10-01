@@ -17,7 +17,7 @@ import dellemuse.model.GuideContentModel;
 import dellemuse.model.SiteModel;
 import dellemuse.model.logging.Logger;
 import dellemuse.webapp.ServiceLocator;
-import dellemuse.webapp.Settings;
+import dellemuse.webapp.WebAppSettings;
 import dellemuse.webapp.branded.global.BrandedGlobalTopPanel;
 import dellemuse.webapp.branded.page.BrandedSitePage;
 import dellemuse.webapp.db.DBService;
@@ -42,12 +42,12 @@ public class DellemuseWebHomePage extends BasePage {
     
     public DellemuseWebHomePage(PageParameters parameters) {
         super(parameters);
-        this.isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(Settings.class).isSimulateServer();
+        this.isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(WebAppSettings.class).isSimulateServer();
     }
 
     public DellemuseWebHomePage() {
         super();
-        this.isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(Settings.class).isSimulateServer();
+        this.isServerSimulated  = ServiceLocator.getInstance().getApplicationContext().getBean(WebAppSettings.class).isSimulateServer();
     }
 
     @Override
