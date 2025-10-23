@@ -13,7 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import dellemuse.model.logging.Logger;
 import jakarta.annotation.PostConstruct;
 
-
 @SpringBootApplication
 public class DellemuseWebApplication {
 			
