@@ -102,7 +102,7 @@ public class BrandedArtExhibitionGuidePage extends BrandedBaseSitePage {
 		}
 		setSiteModel(new Model<SiteModel>(getSite()));	      
 		
-			add(new BrandedGlobalTopPanel("top-panel", this.getSiteModel()));
+		add(new BrandedGlobalTopPanel("top-panel", this.getSiteModel()));
 		add(new BrandedGlobalFooterPanel<>("footer-panel"));
 
 		/** page header */
@@ -202,7 +202,7 @@ public class BrandedArtExhibitionGuidePage extends BrandedBaseSitePage {
                 	private static final long serialVersionUID = 1L;
                     @Override
                     public void onClick() {
-                       setResponsePage(getGuideContentPage(model, getList()));
+                       setResponsePage(getGuideContentPage(model, getItems()));
                     }
 					protected String getImageSrc(IModel<GuideContentModel> model) {
                         RefResourceModel photo = getArtWork (model.getObject()).getRefPhotoModel();

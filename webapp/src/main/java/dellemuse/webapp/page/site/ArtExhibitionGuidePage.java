@@ -190,7 +190,7 @@ public class ArtExhibitionGuidePage extends BaseSitePage {
                     private static final long serialVersionUID = 1L;
                     @Override
                     public void onClick() {
-                       setResponsePage(getGuideContentPage(model, getList()));
+                       setResponsePage(getGuideContentPage(model, getItems()));
                     }
                     
                     protected String getImageSrc(IModel<GuideContentModel> model) {

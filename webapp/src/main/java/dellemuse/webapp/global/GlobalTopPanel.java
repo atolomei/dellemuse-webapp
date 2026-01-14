@@ -58,7 +58,7 @@ public class GlobalTopPanel extends ModelPanel<UserModel> {
 		
 		NavBar<Void> nav = new NavBar<Void>("navbarLeft");
 
-		LabelLinkPanel logo = new LabelLinkPanel("item", new Model<String>("DeM")) {
+		LabelLinkPanel logo = new LabelLinkPanel("item" ) {
             private static final long serialVersionUID = 1L;
             @Override
             protected void onClick() {
